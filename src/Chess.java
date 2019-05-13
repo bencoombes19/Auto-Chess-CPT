@@ -4,7 +4,8 @@ public class Chess {
 	int intLevel, intAtkDmg, intArmour, intHealth;
 	boolean blnRanged;
 
-	public Chess(int intLevel, int intAtkDmg, int intArmour, int intHealth, String strClass, String strRace, boolean blnRanged) {
+	public Chess(int intLevel, int intAtkDmg, int intArmour, int intHealth, String strClass, String strRace,
+			boolean blnRanged) {
 		this.intLevel = intLevel;
 		this.intAtkDmg = intAtkDmg;
 		this.intArmour = intArmour;
@@ -12,5 +13,5 @@ public class Chess {
 		this.strClass = strClass;
 		this.strRace = strRace;
 		this.blnRanged = blnRanged;
-}
+	}
 }
