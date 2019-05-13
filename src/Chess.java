@@ -14,3 +14,4 @@ public class Chess {
 		this.blnRanged = blnRanged;
 	}
 }
+ystydiuadushjdahsjdhuak
