@@ -16,7 +16,7 @@ public class GamePanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		try {
-			// Importing the image
+			// Importing the images
 			start1 = ImageIO.read(new File("start1.png"));
 			start2 = ImageIO.read(new File("start2.png"));
 			options1 = ImageIO.read(new File("options1.png"));
