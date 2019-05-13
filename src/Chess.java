@@ -12,5 +12,5 @@ public class Chess {
 		this.strClass = strClass;
 		this.strRace = strRace;
 		this.blnRanged = blnRanged;
-	}
+}
 }
