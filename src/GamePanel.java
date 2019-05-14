@@ -12,6 +12,7 @@ public class GamePanel extends JPanel {
 	BufferedImage options2 = null;
 	BufferedImage exit1 = null;
 	BufferedImage exit2 = null;
+	BufferedImage menu = null;
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
@@ -23,11 +24,14 @@ public class GamePanel extends JPanel {
 			options2 = ImageIO.read(new File("options2.png"));
 			exit1 = ImageIO.read(new File("exit1.png"));
 			exit2 = ImageIO.read(new File("exit2.png"));
+			menu = ImageIO.read(new File ("menu.png"));
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		// Start Screen
 		if (Game.GameState == 0) {
+			g.drawImage(menu,0,0,null);
 			if (Game.MenuOption == 0) {
 				g.drawImage(start1, 560, 440, null);
 				g.drawImage(options2, 525, 510, null);
