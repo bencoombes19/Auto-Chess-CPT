@@ -13,6 +13,7 @@ public class GamePanel extends JPanel {
 	BufferedImage exit1 = null;
 	BufferedImage exit2 = null;
 	BufferedImage menu = null;
+	BufferedImage play = null;
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
@@ -25,6 +26,7 @@ public class GamePanel extends JPanel {
 			exit1 = ImageIO.read(new File("exit1.png"));
 			exit2 = ImageIO.read(new File("exit2.png"));
 			menu = ImageIO.read(new File ("menu.png"));
+			play = ImageIO.read(new File("play.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -32,7 +34,7 @@ public class GamePanel extends JPanel {
 		// Start Screen
 		if (Game.GameState == 0) {
 			g.drawImage(menu,0,0,null);
-			g.drawLine(640, 0, 640, 720);
+
 			if (Game.MenuOption == 0) {
 				g.drawImage(start1, 540, 440, null);
 				g.drawImage(options2, 500, 510, null);
@@ -48,6 +50,7 @@ public class GamePanel extends JPanel {
 			}
 		} else if (Game.GameState == 1) {
 			g.setColor(Color.BLACK);
+			g.drawImage(play,0,0,null);
 			g.fillRect(0, 0, 1600, 900);
 		}
 	}
