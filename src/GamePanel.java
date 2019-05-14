@@ -49,9 +49,7 @@ public class GamePanel extends JPanel {
 				g.drawImage(exit1, 570, 580, null);
 			}
 		} else if (Game.GameState == 1) {
-			g.setColor(Color.BLACK);
 			g.drawImage(play,0,0,null);
-			g.fillRect(0, 0, 1600, 900);
 		}
 	}
 
