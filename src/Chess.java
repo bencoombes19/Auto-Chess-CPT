@@ -1,16 +1,16 @@
 
 public class Chess {
 	String strClass, strRace;
-	int intNum, intLevel, intAtkDmg, intArmour, intHealth;
+	int intLevel, intAtkDmg, intArmour, intHealth, intNum;
 	boolean blnRanged;
 
-	public Chess(int intNum, int intLevel, int intAtkDmg, int intArmour, int intHealth, String strClass, String strRace,
+	public Chess(int intLevel, int intAtkDmg, int intArmour, int intHealth, int intNum, String strClass, String strRace,
 			boolean blnRanged) {
-		this.intNum = intNum;
 		this.intLevel = intLevel;
 		this.intAtkDmg = intAtkDmg;
 		this.intArmour = intArmour;
 		this.intHealth = intHealth;
+		this.intNum = intNum;
 		this.strClass = strClass;
 		this.strRace = strRace;
 		this.blnRanged = blnRanged;
