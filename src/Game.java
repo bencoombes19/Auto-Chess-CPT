@@ -56,7 +56,6 @@ public class Game implements ActionListener, KeyListener {
 
 	public void startGame() {
 		GameState = 1;
-
 	}
 
 	public void keyReleased(KeyEvent e) {
