@@ -14,7 +14,7 @@ public class Game implements ActionListener, KeyListener {
 		panel = new GamePanel();
 		panel.setLayout(null);
 		frame = new JFrame("Game");
-		frame.setPreferredSize(new Dimension(1280, 720));
+		panel.setPreferredSize(new Dimension(1280, 720));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setContentPane(panel);
 		frame.setResizable(false);
