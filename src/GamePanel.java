@@ -29,17 +29,17 @@ public class GamePanel extends JPanel {
 		// Start Screen
 		if (Game.GameState == 0) {
 			if (Game.MenuOption == 0) {
-				g.drawImage(start1, 560, 240, null);
-				g.drawImage(options2, 525, 300, null);
-				g.drawImage(exit2, 600, 360, null);
+				g.drawImage(start1, 560, 440, null);
+				g.drawImage(options2, 525, 510, null);
+				g.drawImage(exit2, 600, 570, null);
 			} else if (Game.MenuOption == 1) { 
-				g.drawImage(start2, 560, 240, null);
-				g.drawImage(options1, 525, 300, null);
-				g.drawImage(exit2, 600, 360, null);
+				g.drawImage(start2, 560, 440, null);
+				g.drawImage(options1, 525, 510, null);
+				g.drawImage(exit2, 600, 570, null);
 			} else if (Game.MenuOption == 2) {
-				g.drawImage(start2, 560, 240, null);
-				g.drawImage(options2, 525, 300, null);
-				g.drawImage(exit1, 600, 360, null);
+				g.drawImage(start2, 560, 440, null);
+				g.drawImage(options2, 525, 510, null);
+				g.drawImage(exit1, 600, 570, null);
 			}
 		} else if (Game.GameState == 1) {
 			g.setColor(Color.WHITE);
