@@ -40,7 +40,7 @@ public class GamePanel extends JPanel {
 		// Start Screen
 		if (Game.GameState == 0) {
 			g.drawImage(menu, 0, 0, null);
-			g.drawLine(640, 0, 640, 800);
+			//g.drawLine(640, 0, 640, 800);
 			if (Game.MenuOption == 0) {
 				g.drawImage(start1, 540, 440, null);
 				g.drawImage(options2, 500, 510, null);
