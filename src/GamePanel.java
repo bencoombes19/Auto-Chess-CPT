@@ -17,6 +17,9 @@ public class GamePanel extends JPanel {
 	BufferedImage Help = null;
 	BufferedImage help1 = null;
 	BufferedImage help2 = null;
+	Ellipse2D.Double chesspiece;
+	public static Ellipse2D.Double[] board;
+	public static Ellipse2D.Double[] bench;
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
