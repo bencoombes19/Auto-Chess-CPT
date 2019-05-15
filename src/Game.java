@@ -38,8 +38,8 @@ public class Game implements ActionListener, KeyListener {
 			}
 		}
 		if (e.getKeyChar() == 's' || e.getKeyCode() == KeyEvent.VK_DOWN) {
-			if (MenuOption + 1 > 2) {
-				MenuOption = 2;
+			if (MenuOption + 1 > 3) {
+				MenuOption = 3;
 			} else {
 				MenuOption = MenuOption + 1;
 			}
