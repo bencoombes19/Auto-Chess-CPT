@@ -28,46 +28,45 @@ public class GamePanel extends JPanel {
 			options2 = ImageIO.read(new File("options2.png"));
 			exit1 = ImageIO.read(new File("exit1.png"));
 			exit2 = ImageIO.read(new File("exit2.png"));
-			menu = ImageIO.read(new File ("menu.png"));
+			menu = ImageIO.read(new File("menu.png"));
 			play = ImageIO.read(new File("play.png"));
-			Help = ImageIO.read(new File ("Help.png"));
+			Help = ImageIO.read(new File("Help.png"));
 			help1 = ImageIO.read(new File("help1.png"));
 			help2 = ImageIO.read(new File("help2.png"));
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		// Start Screen
 		if (Game.GameState == 0) {
-			g.drawImage(menu,0,0,null);
+			g.drawImage(menu, 0, 0, null);
 			g.drawLine(640, 0, 640, 800);
 			if (Game.MenuOption == 0) {
 				g.drawImage(start1, 540, 440, null);
 				g.drawImage(options2, 500, 510, null);
 				g.drawImage(help2, 560, 580, null);
-				g.drawImage(exit2, 570, 650, null);
-			} else if (Game.MenuOption == 1) { 
+				g.drawImage(exit2, 565, 650, null);
+			} else if (Game.MenuOption == 1) {
 				g.drawImage(start2, 540, 440, null);
 				g.drawImage(options1, 500, 510, null);
 				g.drawImage(help2, 560, 580, null);
-				g.drawImage(exit2, 570, 650, null);
+				g.drawImage(exit2, 565, 650, null);
 			} else if (Game.MenuOption == 2) {
 				g.drawImage(start2, 540, 440, null);
 				g.drawImage(options2, 500, 510, null);
 				g.drawImage(help1, 560, 580, null);
-				g.drawImage(exit2, 570, 650, null);
-			}else if (Game.MenuOption == 3) {
-				g.drawImage(start1, 540, 440, null);
+				g.drawImage(exit2, 565, 650, null);
+			} else if (Game.MenuOption == 3) {
+				g.drawImage(start2, 540, 440, null);
 				g.drawImage(options2, 500, 510, null);
 				g.drawImage(help2, 560, 580, null);
-				g.drawImage(exit1, 570, 650, null);
+				g.drawImage(exit1, 565, 650, null);
 			}
-			
+
 		} else if (Game.GameState == 1) {
-			g.drawImage(play,0,0,null);
-		}
-		else if (Game.GameState == 2) {
-			g.drawImage(Help,0,0,null);
+			g.drawImage(play, 0, 0, null);
+		} else if (Game.GameState == 2) {
+			g.drawImage(Help, 0, 0, null);
 		}
 	}
 
