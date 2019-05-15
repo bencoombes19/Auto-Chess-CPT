@@ -14,6 +14,9 @@ public class GamePanel extends JPanel {
 	BufferedImage exit2 = null;
 	BufferedImage menu = null;
 	BufferedImage play = null;
+	BufferedImage Help = null;
+	BufferedImage help1 = null;
+	BufferedImage help2 = null;
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
@@ -27,6 +30,9 @@ public class GamePanel extends JPanel {
 			exit2 = ImageIO.read(new File("exit2.png"));
 			menu = ImageIO.read(new File ("menu.png"));
 			play = ImageIO.read(new File("play.png"));
+			Help = ImageIO.read(new File ("Help.png"));
+			help1 = ImageIO.read(new File("help1.png"));
+			help2 = ImageIO.read(new File("help2.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -34,22 +40,34 @@ public class GamePanel extends JPanel {
 		// Start Screen
 		if (Game.GameState == 0) {
 			g.drawImage(menu,0,0,null);
-
+			g.drawLine(640, 0, 640, 800);
 			if (Game.MenuOption == 0) {
 				g.drawImage(start1, 540, 440, null);
 				g.drawImage(options2, 500, 510, null);
-				g.drawImage(exit2, 570, 580, null);
+				g.drawImage(help2, 560, 580, null);
+				g.drawImage(exit2, 570, 650, null);
 			} else if (Game.MenuOption == 1) { 
 				g.drawImage(start2, 540, 440, null);
 				g.drawImage(options1, 500, 510, null);
-				g.drawImage(exit2, 570, 580, null);
+				g.drawImage(help2, 560, 580, null);
+				g.drawImage(exit2, 570, 650, null);
 			} else if (Game.MenuOption == 2) {
 				g.drawImage(start2, 540, 440, null);
 				g.drawImage(options2, 500, 510, null);
-				g.drawImage(exit1, 570, 580, null);
+				g.drawImage(help1, 560, 580, null);
+				g.drawImage(exit2, 570, 650, null);
+			}else if (Game.MenuOption == 3) {
+				g.drawImage(start1, 540, 440, null);
+				g.drawImage(options2, 500, 510, null);
+				g.drawImage(help2, 560, 580, null);
+				g.drawImage(exit1, 570, 650, null);
 			}
+			
 		} else if (Game.GameState == 1) {
 			g.drawImage(play,0,0,null);
+		}
+		else if (Game.GameState == 2) {
+			g.drawImage(Help,0,0,null);
 		}
 	}
 
