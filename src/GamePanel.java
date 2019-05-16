@@ -14,7 +14,7 @@ public class GamePanel extends JPanel {
 	BufferedImage exit2 = null;
 	BufferedImage menu = null;
 	BufferedImage play = null;
-	BufferedImage Help = null;
+	BufferedImage help = null;
 	BufferedImage help1 = null;
 	BufferedImage help2 = null;
 	Ellipse2D.Double chesspiece;
@@ -33,7 +33,7 @@ public class GamePanel extends JPanel {
 			exit2 = ImageIO.read(new File("exit2.png"));
 			menu = ImageIO.read(new File("menu.png"));
 			play = ImageIO.read(new File("play.png"));
-			Help = ImageIO.read(new File("Help.png"));
+			help = ImageIO.read(new File("help.png"));
 			help1 = ImageIO.read(new File("help1.png"));
 			help2 = ImageIO.read(new File("help2.png"));
 
@@ -69,7 +69,7 @@ public class GamePanel extends JPanel {
 		} else if (Game.GameState == 1) {
 			g.drawImage(play, 0, 0, null);
 		} else if (Game.GameState == 2) {
-			g.drawImage(Help, 0, 0, null);
+			g.drawImage(help, 0, 0, null);
 		}
 	}
 

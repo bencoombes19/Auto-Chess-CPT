@@ -32,7 +32,9 @@ public class Game implements ActionListener, KeyListener {
 			if (MenuOption == 0) {
 				startGame();
 			} else if (MenuOption == 1) {
-
+				options();
+			} else if (MenuOption == 2) {
+				help();
 			} else {
 				frame.setVisible(false);
 				frame.dispose();
@@ -57,7 +59,7 @@ public class Game implements ActionListener, KeyListener {
 
 	public void startGame() {
 		GameState = 1;
-		
+
 	}
 
 	public void options() {
@@ -66,7 +68,7 @@ public class Game implements ActionListener, KeyListener {
 
 	public void help() {
 		GameState = 3;
-		
+
 	}
 
 	public void keyReleased(KeyEvent e) {
