@@ -3,6 +3,23 @@ public class Chess {
 	String strClass, strRace;
 	int intLevel, intAtkDmg, intArmour, intHealth, intNum;
 	boolean blnRanged;
+	
+	public void buy() {
+		
+	}
+	
+	public void moveToBoard() {
+		
+	}
+	
+	public void sell() {
+		
+	}
+	
+	public void moveToBench() {
+		
+	}
+	
 	public Chess(int intLevel, int intAtkDmg, int intArmour, int intHealth, int intNum, String strClass, String strRace,
 			boolean blnRanged) {
 		this.intLevel = intLevel;
