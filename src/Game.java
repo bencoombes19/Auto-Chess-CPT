@@ -6,6 +6,7 @@ public class Game implements ActionListener, KeyListener {
 	JFrame frame;
 	GamePanel panel;
 	Timer fps;
+	JTextField portoption;
 
 	public static int MenuOption = 0, GameState = 0, intCurrLevel1 = 1, intExpLeft1 = 0, intExp1 = 0, intBoard1[],
 			intBench1[], intRoll1[], intCurrLevel2 = 1, intExpLeft2 = 0, intExp2 = 0, intBoard2[], intBench2[],
@@ -25,6 +26,11 @@ public class Game implements ActionListener, KeyListener {
 		panel.requestFocusInWindow();
 		fps = new Timer(1000 / 60, this);
 		fps.start();
+		portoption = new JTextField();
+		portoption.setBounds(590, 360, 100, 40);
+		portoption.setToolTipText("Port number used for the server 4 integers long");
+		panel.add(portoption);
+		portoption.setVisible(false);
 	}
 
 	public void keyPressed(KeyEvent e) {
@@ -64,6 +70,7 @@ public class Game implements ActionListener, KeyListener {
 
 	public void options() {
 		GameState = 2;
+		portoption.setVisible(true);
 	}
 
 	public void help() {

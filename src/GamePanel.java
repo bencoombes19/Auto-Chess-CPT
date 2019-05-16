@@ -17,6 +17,7 @@ public class GamePanel extends JPanel {
 	BufferedImage help = null;
 	BufferedImage help1 = null;
 	BufferedImage help2 = null;
+	BufferedImage options = null;
 	Ellipse2D.Double chesspiece;
 	public static Ellipse2D.Double[] board;
 	public static Ellipse2D.Double[] bench;
@@ -36,6 +37,7 @@ public class GamePanel extends JPanel {
 			help = ImageIO.read(new File("help.png"));
 			help1 = ImageIO.read(new File("help1.png"));
 			help2 = ImageIO.read(new File("help2.png"));
+			options = ImageIO.read(new File("options.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -43,7 +45,7 @@ public class GamePanel extends JPanel {
 		// Start Screen
 		if (Game.GameState == 0) {
 			g.drawImage(menu, 0, 0, null);
-			//g.drawLine(640, 0, 640, 800);
+			// g.drawLine(640, 0, 640, 800);
 			if (Game.MenuOption == 0) {
 				g.drawImage(start1, 540, 440, null);
 				g.drawImage(options2, 500, 510, null);
@@ -69,6 +71,9 @@ public class GamePanel extends JPanel {
 		} else if (Game.GameState == 1) {
 			g.drawImage(play, 0, 0, null);
 		} else if (Game.GameState == 2) {
+			g.drawImage(options, 0, 0, null);
+			
+		} else if (Game.GameState == 3) {
 			g.drawImage(help, 0, 0, null);
 		}
 	}
