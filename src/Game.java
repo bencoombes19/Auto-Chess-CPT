@@ -6,7 +6,6 @@ public class Game implements ActionListener, KeyListener {
 	JFrame frame;
 	GamePanel panel;
 	Timer fps;
-	JButton Quit;
 
 	public static int MenuOption = 0, GameState = 0, intCurrLevel1 = 1, intExpLeft1 = 0, intExp1 = 0, intBoard1[],
 			intBench1[], intRoll1[], intCurrLevel2 = 1, intExpLeft2 = 0, intExp2 = 0, intBoard2[], intBench2[],
