@@ -67,10 +67,10 @@ public class GamePanel extends JPanel {
 
 		} else if (Game.GameState == 1) {
 			g.drawImage(play, 0, 0, null);
-		} else if (Game.GameState == 2) {
+		} else if (Game.GameState == 3) {
 			g.drawImage(options, 0, 0, null);
 
-		} else if (Game.GameState == 3) {
+		} else if (Game.GameState == 4) {
 			g.drawImage(help, 0, 0, null);
 		}
 	}
