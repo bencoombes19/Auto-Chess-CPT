@@ -1,12 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 
 public class Game implements ActionListener, KeyListener {
 	JFrame frame;
 	GamePanel panel;
 	Timer fps;
 	JTextField portoption;
+	static BufferedReader reader;
+	static Chess[] pieces = new Chess[15];
 
 	public static int MenuOption = 0, GameState = 0, intCurrLevel1 = 1, intExpLeft1 = 0, intExp1 = 0, intBoard1[],
 			intBench1[], intRoll1[], intCurrLevel2 = 1, intExpLeft2 = 0, intExp2 = 0, intBoard2[], intBench2[],
@@ -94,5 +97,21 @@ public class Game implements ActionListener, KeyListener {
 
 	public static void main(String[] args) {
 		new Game();
+		try {
+			reader = new BufferedReader(new FileReader("pieces.csv"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			for (int i = 0; i < 15; i++) {
+				String strCSV = reader.readLine();
+				String strLine[] = strCSV.split(",");
+				pieces[i] = new Chess(strLine[0], Integer.parseInt(strLine[1]), Integer.parseInt(strLine[2]),
+						Integer.parseInt(strLine[3]), Integer.parseInt(strLine[4]), Integer.parseInt(strLine[5]),
+						Integer.parseInt(strLine[6]), strLine[7], strLine[8], Boolean.parseBoolean(strLine[9]));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

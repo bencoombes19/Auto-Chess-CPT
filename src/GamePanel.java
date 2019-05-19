@@ -18,9 +18,6 @@ public class GamePanel extends JPanel {
 	BufferedImage help1 = null;
 	BufferedImage help2 = null;
 	BufferedImage options = null;
-	Ellipse2D.Double chesspiece;
-	public static Ellipse2D.Double[] board;
-	public static Ellipse2D.Double[] bench;
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
@@ -72,7 +69,7 @@ public class GamePanel extends JPanel {
 			g.drawImage(play, 0, 0, null);
 		} else if (Game.GameState == 2) {
 			g.drawImage(options, 0, 0, null);
-			
+
 		} else if (Game.GameState == 3) {
 			g.drawImage(help, 0, 0, null);
 		}

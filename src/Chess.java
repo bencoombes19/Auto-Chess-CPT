@@ -23,7 +23,7 @@ public class Chess {
 	// 3 troll increases attack speed of all pieces +20%
 	// 3/6 warrior increases armour +5/+10
 	// 3 orc increases health +300 health
-	// 3 hunter increases attack damage of all pieces +5% and +10 
+	// 3 hunter increases attack damage of all pieces +5% and +10
 	// 3 knight increases armour +5
 	// 2 human increases attack damage +15%
 	// 2 shaman increases attack speed +20%
