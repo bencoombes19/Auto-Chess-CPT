@@ -18,6 +18,7 @@ public class GamePanel extends JPanel {
 	BufferedImage help1 = null;
 	BufferedImage help2 = null;
 	BufferedImage options = null;
+	BufferedImage axe = null;
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
@@ -35,6 +36,7 @@ public class GamePanel extends JPanel {
 			help1 = ImageIO.read(new File("help1.png"));
 			help2 = ImageIO.read(new File("help2.png"));
 			options = ImageIO.read(new File("options.png"));
+			axe = ImageIO.read(new File("axe.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -67,6 +69,7 @@ public class GamePanel extends JPanel {
 
 		} else if (Game.GameState == 1) {
 			g.drawImage(play, 0, 0, null);
+			g.drawImage(axe, 200, 200, null);
 		} else if (Game.GameState == 3) {
 			g.drawImage(options, 0, 0, null);
 

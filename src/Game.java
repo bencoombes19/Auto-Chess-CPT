@@ -11,9 +11,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	static BufferedReader reader;
 	static Chess[] pieces = new Chess[15];
 
-	public static int MenuOption = 0, GameState = 0, intCurrLevel1 = 1, intExpLeft1 = 0, intExp1 = 0, intBoard1[],
-			intBench1[], intRoll1[], intGold1, intCurrLevel2 = 1, intExpLeft2 = 0, intExp2 = 0, intBoard2[],
-			intBench2[], intRoll2[], intPieces1, intPieces2, intGold2, intPort = 3000;
+	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intExp = 0, intBoard[], intBench[],
+			intRoll[] = new int[5], intGold = 1, intPieces, intPort = 3000;
 
 	public Game() {
 		portoption = new JTextField();
@@ -31,41 +30,63 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		frame.pack();
 		frame.setVisible(true);
 		panel.addKeyListener(this);
-		panel.requestFocusInWindow();
 		fps = new Timer(1000 / 60, this);
 		fps.start();
-
 		panel.add(portoption);
 		panel.addMouseListener(this);
 		panel.addMouseMotionListener(this);
+		panel.requestFocusInWindow();
 
 	}
 
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_ENTER) {
-			if (MenuOption == 0) {
-				startGame();
-			} else if (MenuOption == 1) {
-				options();
-			} else if (MenuOption == 2) {
-				help();
-			} else {
-				frame.setVisible(false);
-				frame.dispose();
+		if (GameState == 0) {
+			if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_ENTER) {
+				if (MenuOption == 0) {
+					startGame();
+				} else if (MenuOption == 1) {
+					options();
+				} else if (MenuOption == 2) {
+					help();
+				} else {
+					frame.setVisible(false);
+					frame.dispose();
+				}
 			}
-		}
-		if (e.getKeyChar() == 's' || e.getKeyCode() == KeyEvent.VK_DOWN) {
-			if (MenuOption + 1 > 3) {
-				MenuOption = 3;
-			} else {
-				MenuOption = MenuOption + 1;
+			if (e.getKeyChar() == 's' || e.getKeyCode() == KeyEvent.VK_DOWN) {
+				if (MenuOption + 1 > 3) {
+					MenuOption = 3;
+				} else {
+					MenuOption = MenuOption + 1;
+				}
 			}
-		}
-		if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP) {
-			if (MenuOption - 1 < 0) {
-				MenuOption = 0;
-			} else {
-				MenuOption = MenuOption - 1;
+			if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP) {
+				if (MenuOption - 1 < 0) {
+					MenuOption = 0;
+				} else {
+					MenuOption = MenuOption - 1;
+				}
+			}
+		} else if (GameState == 1) {
+			if (e.getKeyCode() == KeyEvent.VK_F) {
+				if (intGold >= 5) {
+					intGold = intGold - 5;
+					intExp = intExp + 4;
+					if (4 >= intExpLeft) {
+						intExp = 0;
+						intExp = intExp + (4 - intExpLeft);
+						intLevel = intLevel + 1;
+						if (intLevel == 2) {
+							intExpLeft = 1;
+						} else {
+							intExpLeft = intExpLeft * 2;
+						}
+					} else {
+						intExpLeft = intExpLeft - 4;
+					}
+				} else {
+					
+				}
 			}
 		}
 
@@ -73,8 +94,25 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public void startGame() {
 		GameState = 1;
-		intGold1 = 1;
-		intGold2 = 1;
+
+	}
+
+	public void roll() {
+		GameState = 2;
+		int intRand = 0;
+		for (int i = 0; i < 5; i++) {
+			if (intLevel == 1 || intLevel == 2) {
+				intRand = (int) (Math.random() * 5);
+			} else if (intLevel == 3 || intLevel == 4) {
+				intRand = (int) (Math.random() * 9);
+			} else if (intLevel == 5) {
+				intRand = (int) (Math.random() * 12);
+			} else {
+				intRand = (int) (Math.random() * 15);
+			}
+
+			intRoll[i] = pieces[intRand].intNum;
+		}
 
 	}
 
@@ -89,7 +127,6 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	}
 
 	public static void main(String[] args) {
-		new Game();
 		try {
 			reader = new BufferedReader(new FileReader("pieces.csv"));
 			for (int i = 0; i < 15; i++) {
@@ -102,6 +139,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		new Game();
 
 	}
 
@@ -142,13 +180,12 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	public void mousePressed(MouseEvent e) {
 		if (GameState == 3) {
 			if (e.getX() >= 655 && e.getX() <= 833 && e.getY() >= 576 && e.getY() <= 653) {
-				if(portoption.getText().length() > 5 || Integer.parseInt(portoption.getText()) > 65535) {
+				if (portoption.getText().length() > 5 || Integer.parseInt(portoption.getText()) > 65535) {
 					portoption.setText(Integer.toString(intPort));
 				}
 				try {
-				intPort = Integer.parseInt(portoption.getText());
-				}
-				catch(NumberFormatException e1) {
+					intPort = Integer.parseInt(portoption.getText());
+				} catch (NumberFormatException e1) {
 					portoption.setText(Integer.toString(intPort));
 				}
 			}
