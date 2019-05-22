@@ -12,13 +12,30 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	static Chess[] pieces = new Chess[15];
 
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intExp = 0, intBoard[], intBench[],
-			intRoll[] = new int[5], intGold = 1, intPieces, intPort = 3000;
+			intGold = 1, intPieces, intPort = 3000;
+	static Chess[] roll = new Chess[5];
+	static Chess[] board;
+	static Chess[] bench = new Chess[8];
+	
 
 	public Game() {
+		try {
+			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("pixelart.ttf"));
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(customFont);
+		
+		} catch (FontFormatException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		portoption = new JTextField();
 		portoption.setBounds(590, 360, 100, 40);
 		portoption.setToolTipText("Port number used for the server 4 integers long");
 		portoption.setText(Integer.toString(intPort));
+		
+		Font font2 = new Font("Pixel-Art Regular", Font.PLAIN, 20);
+		portoption.setFont(font2);
 		portoption.setVisible(false);
 		panel = new GamePanel();
 		panel.setLayout(null);
@@ -43,7 +60,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		if (GameState == 0) {
 			if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_ENTER) {
 				if (MenuOption == 0) {
-					startGame();
+					roll();
 				} else if (MenuOption == 1) {
 					options();
 				} else if (MenuOption == 2) {
@@ -98,7 +115,6 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	}
 
 	public void roll() {
-		GameState = 2;
 		int intRand = 0;
 		for (int i = 0; i < 5; i++) {
 			if (intLevel == 1 || intLevel == 2) {
@@ -111,8 +127,10 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				intRand = (int) (Math.random() * 15);
 			}
 
-			intRoll[i] = pieces[intRand].intNum;
+			roll[i] = pieces[intRand];
 		}
+		GameState = 2;
+		
 
 	}
 
@@ -127,6 +145,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	}
 
 	public static void main(String[] args) {
+	
+		
 		try {
 			reader = new BufferedReader(new FileReader("pieces.csv"));
 			for (int i = 0; i < 15; i++) {

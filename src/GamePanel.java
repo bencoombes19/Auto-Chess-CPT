@@ -70,6 +70,15 @@ public class GamePanel extends JPanel {
 		} else if (Game.GameState == 1) {
 			g.drawImage(play, 0, 0, null);
 			g.drawImage(axe, 200, 200, null);
+		} else if (Game.GameState == 2) {
+			g.setColor(Color.WHITE);
+			g.fillRect(0, 0, 1280, 720);
+			g.setColor(Color.BLACK);
+			g.drawString(Game.roll[0].strName, 100, 300);
+			g.drawString(Game.roll[1].strName, 200, 300);
+			g.drawString(Game.roll[2].strName, 300, 300);
+			g.drawString(Game.roll[3].strName, 400, 300);
+			g.drawString(Game.roll[4].strName, 500, 300);
 		} else if (Game.GameState == 3) {
 			g.drawImage(options, 0, 0, null);
 
