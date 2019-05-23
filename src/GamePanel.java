@@ -19,8 +19,20 @@ public class GamePanel extends JPanel {
 	BufferedImage help2 = null;
 	BufferedImage options = null;
 	BufferedImage axe = null;
+	BufferedImage roll = null;
 
 	public void paintComponent(Graphics g) {
+		try {
+			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("pixelart.ttf"));
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(customFont);
+		
+		} catch (FontFormatException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Font font2 = new Font("Pixel-Art Regular", Font.PLAIN, 18);
 		Graphics2D g2 = (Graphics2D) g;
 		try {
 			// Importing the images
@@ -37,6 +49,7 @@ public class GamePanel extends JPanel {
 			help2 = ImageIO.read(new File("help2.png"));
 			options = ImageIO.read(new File("options.png"));
 			axe = ImageIO.read(new File("axe.png"));
+			roll = ImageIO.read(new File("roll.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -74,11 +87,18 @@ public class GamePanel extends JPanel {
 			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, 1280, 720);
 			g.setColor(Color.BLACK);
-			g.drawString(Game.roll[0].strName, 100, 300);
-			g.drawString(Game.roll[1].strName, 200, 300);
-			g.drawString(Game.roll[2].strName, 300, 300);
-			g.drawString(Game.roll[3].strName, 400, 300);
-			g.drawString(Game.roll[4].strName, 500, 300);
+			g.drawImage(roll, 0, 0, null);
+			g.setFont(font2);
+			g.drawString(Game.roll[0].strName, 100, 230);
+			g.drawString(Game.roll[1].strName, 320, 230);
+			g.drawString(Game.roll[2].strName, 575, 230);
+			g.drawString(Game.roll[3].strName, 810, 230);
+			g.drawString(Game.roll[4].strName, 1055, 230);
+			g.drawImage(axe, 100, 250, null);
+			g.drawImage(axe, 345, 250, null);
+			g.drawImage(axe, 590, 250, null);
+			g.drawImage(axe, 835, 250, null);
+			g.drawImage(axe, 1080, 250, null);
 		} else if (Game.GameState == 3) {
 			g.drawImage(options, 0, 0, null);
 

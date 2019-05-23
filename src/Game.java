@@ -16,14 +16,13 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	static Chess[] roll = new Chess[5];
 	static Chess[] board;
 	static Chess[] bench = new Chess[8];
-	
 
 	public Game() {
 		try {
 			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("pixelart.ttf"));
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(customFont);
-		
+
 		} catch (FontFormatException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
@@ -33,7 +32,6 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		portoption.setBounds(590, 360, 100, 40);
 		portoption.setToolTipText("Port number used for the server 4 integers long");
 		portoption.setText(Integer.toString(intPort));
-		
 		Font font2 = new Font("Pixel-Art Regular", Font.PLAIN, 20);
 		portoption.setFont(font2);
 		portoption.setVisible(false);
@@ -102,7 +100,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 						intExpLeft = intExpLeft - 4;
 					}
 				} else {
-					
+
 				}
 			}
 		}
@@ -130,7 +128,6 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			roll[i] = pieces[intRand];
 		}
 		GameState = 2;
-		
 
 	}
 
@@ -145,8 +142,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	}
 
 	public static void main(String[] args) {
-	
-		
+
 		try {
 			reader = new BufferedReader(new FileReader("pieces.csv"));
 			for (int i = 0; i < 15; i++) {
@@ -198,7 +194,54 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	}
 
 	public void mousePressed(MouseEvent e) {
-		if (GameState == 3) {
+		if (GameState == 2) {
+			if (e.getX() >= 53 && e.getX() <= 267 && e.getY() >= 431 && e.getY() <= 523) {
+				for (int i = 0; i < bench.length; i++) {
+					if (bench[i] == null) {
+						bench[i] = roll[0];
+						System.out.println(bench[i].strName);
+						i = 10;
+
+					}
+				}
+			} else if (e.getX() >= 295 && e.getX() <= 509 && e.getY() >= 431 && e.getY() <= 523) {
+				for (int i = 0; i < bench.length; i++) {
+					if (bench[i] == null) {
+						bench[i] = roll[1];
+						System.out.println(bench[i].strName);
+						i = 10;
+
+					}
+				}
+			} else if (e.getX() >= 542 && e.getX() <= 756 && e.getY() >= 509 && e.getY() <= 523) {
+				for (int i = 0; i < bench.length; i++) {
+					if (bench[i] == null) {
+						bench[i] = roll[2];
+						System.out.println(bench[i].strName);
+						i = 10;
+
+					}
+				}
+			} else if (e.getX() >= 784 && e.getX() <= 998 && e.getY() >= 509 && e.getY() <= 523) {
+				for (int i = 0; i < bench.length; i++) {
+					if (bench[i] == null) {
+						bench[i] = roll[3];
+						System.out.println(bench[i].strName);
+						i = 10;
+
+					}
+				}
+			} else if (e.getX() >= 1027 && e.getX() <= 1241 && e.getY() >= 509 && e.getY() <= 523) {
+				for (int i = 0; i < bench.length; i++) {
+					if (bench[i] == null) {
+						bench[i] = roll[4];
+						System.out.println(bench[i].strName);
+						i = 10;
+
+					}
+				}
+			}
+		} else if (GameState == 3) {
 			if (e.getX() >= 655 && e.getX() <= 833 && e.getY() >= 576 && e.getY() <= 653) {
 				if (portoption.getText().length() > 5 || Integer.parseInt(portoption.getText()) > 65535) {
 					portoption.setText(Integer.toString(intPort));
