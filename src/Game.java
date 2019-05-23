@@ -204,7 +204,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 					}
 				}
-			} else if (e.getX() >= 295 && e.getX() <= 509 && e.getY() >= 431 && e.getY() <= 523) {
+			}
+			if (e.getX() >= 295 && e.getX() <= 509 && e.getY() >= 431 && e.getY() <= 523) {
 				for (int i = 0; i < bench.length; i++) {
 					if (bench[i] == null) {
 						bench[i] = roll[1];
@@ -213,7 +214,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 					}
 				}
-			} else if (e.getX() >= 542 && e.getX() <= 756 && e.getY() >= 509 && e.getY() <= 523) {
+			}
+			if (e.getX() >= 542 && e.getX() <= 756 && e.getY() >= 431 && e.getY() <= 523) {
 				for (int i = 0; i < bench.length; i++) {
 					if (bench[i] == null) {
 						bench[i] = roll[2];
@@ -222,7 +224,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 					}
 				}
-			} else if (e.getX() >= 784 && e.getX() <= 998 && e.getY() >= 509 && e.getY() <= 523) {
+			}
+			if (e.getX() >= 784 && e.getX() <= 998 && e.getY() >= 431 && e.getY() <= 523) {
 				for (int i = 0; i < bench.length; i++) {
 					if (bench[i] == null) {
 						bench[i] = roll[3];
@@ -231,7 +234,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 					}
 				}
-			} else if (e.getX() >= 1027 && e.getX() <= 1241 && e.getY() >= 509 && e.getY() <= 523) {
+			}
+			if (e.getX() >= 1027 && e.getX() <= 1241 && e.getY() >= 431 && e.getY() <= 523) {
 				for (int i = 0; i < bench.length; i++) {
 					if (bench[i] == null) {
 						bench[i] = roll[4];
