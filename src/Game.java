@@ -109,6 +109,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public void startGame() {
 		GameState = 1;
+	
 
 	}
 
@@ -156,7 +157,6 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			e.printStackTrace();
 		}
 		new Game();
-
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -197,8 +197,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		if (GameState == 2) {
 			if (e.getX() >= 53 && e.getX() <= 267 && e.getY() >= 431 && e.getY() <= 523) {
 				for (int i = 0; i < bench.length; i++) {
-					if (bench[i] == null) {
+					if (bench[i] == null && intGold >= roll[0].intLevel) {
 						bench[i] = roll[0];
+						intGold = intGold - roll[0].intLevel;
 						System.out.println(bench[i].strName);
 						i = 10;
 
@@ -207,8 +208,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			}
 			if (e.getX() >= 295 && e.getX() <= 509 && e.getY() >= 431 && e.getY() <= 523) {
 				for (int i = 0; i < bench.length; i++) {
-					if (bench[i] == null) {
+					if (bench[i] == null && intGold >= roll[1].intLevel) {
 						bench[i] = roll[1];
+						intGold = intGold - roll[1].intLevel;
 						System.out.println(bench[i].strName);
 						i = 10;
 
@@ -217,8 +219,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			}
 			if (e.getX() >= 542 && e.getX() <= 756 && e.getY() >= 431 && e.getY() <= 523) {
 				for (int i = 0; i < bench.length; i++) {
-					if (bench[i] == null) {
+					if (bench[i] == null && intGold >= roll[2].intLevel) {
 						bench[i] = roll[2];
+						intGold = intGold - roll[2].intLevel;
 						System.out.println(bench[i].strName);
 						i = 10;
 
@@ -227,8 +230,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			}
 			if (e.getX() >= 784 && e.getX() <= 998 && e.getY() >= 431 && e.getY() <= 523) {
 				for (int i = 0; i < bench.length; i++) {
-					if (bench[i] == null) {
+					if (bench[i] == null && intGold >= roll[3].intLevel) {
 						bench[i] = roll[3];
+						intGold = intGold - roll[3].intLevel;
 						System.out.println(bench[i].strName);
 						i = 10;
 
@@ -237,13 +241,17 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			}
 			if (e.getX() >= 1027 && e.getX() <= 1241 && e.getY() >= 431 && e.getY() <= 523) {
 				for (int i = 0; i < bench.length; i++) {
-					if (bench[i] == null) {
+					if (bench[i] == null && intGold >= roll[4].intLevel) {
 						bench[i] = roll[4];
+						intGold = intGold - roll[4].intLevel;
 						System.out.println(bench[i].strName);
 						i = 10;
 
 					}
 				}
+			}
+			if (e.getX() >= 540 && e.getX() <= 754 && e.getY() >= 561 && e.getY() <= 654) {
+				startGame();
 			}
 		} else if (GameState == 3) {
 			if (e.getX() >= 655 && e.getX() <= 833 && e.getY() >= 576 && e.getY() <= 653) {

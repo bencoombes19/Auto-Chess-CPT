@@ -32,7 +32,7 @@ public class GamePanel extends JPanel {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Font font2 = new Font("Pixel-Art Regular", Font.PLAIN, 18);
+		Font font2 = new Font("ArcadeClassic", Font.TRUETYPE_FONT, 60);
 		Graphics2D g2 = (Graphics2D) g;
 		try {
 			// Importing the images
@@ -92,8 +92,9 @@ public class GamePanel extends JPanel {
 			g.drawString(Game.roll[0].strName, 100, 230);
 			g.drawString(Game.roll[1].strName, 320, 230);
 			g.drawString(Game.roll[2].strName, 575, 230);
-			g.drawString(Game.roll[3].strName, 810, 230);
+			g.drawString(Game.roll[3].strName, 800, 230);
 			g.drawString(Game.roll[4].strName, 1055, 230);
+			g.drawString("Gold " + Game.intGold, 550, 130);
 			g.drawImage(axe, 100, 250, null);
 			g.drawImage(axe, 345, 250, null);
 			g.drawImage(axe, 590, 250, null);
@@ -101,7 +102,6 @@ public class GamePanel extends JPanel {
 			g.drawImage(axe, 1080, 250, null);
 		} else if (Game.GameState == 3) {
 			g.drawImage(options, 0, 0, null);
-
 		} else if (Game.GameState == 4) {
 			g.drawImage(help, 0, 0, null);
 		}

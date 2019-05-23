@@ -1,21 +1,45 @@
 
 public class Chess {
-	String strName, strClass, strRace;
-	int intLevel, intAtkDmg, intArmour, intHealth, intNum, intAtkSpd;
-	boolean blnRanged;
+	/** name of the piece */
+	public String strName;
+	/** the class type of the piece */
+	public String strClass;
+	/** race of the piece */
+	public String strRace;
+	/** the level/price of the piece */
+	public int intLevel;
+	/** the attack stat of the piece determines damage done on the field */
+	public int intAtkDmg;
+	/** how much damage the piece can deflect/tank */
+	public int intArmour;
+	/** how much damage the piece can withstand before dying */
+	public int intHealth;
+	/** an identification number for reference */
+	public int intNum;
+	/** how fast the piece can attack */
+	public int intAtkSpd;
+	/** ranged/true pieces take less damage while melee/false take more damage */
+	public boolean blnRanged;
 
+	/**
+	 * when a piece is bought on the roll screen the piece is then added to an array
+	 * of Chess that holds the bench
+	 */
 	public void buy() {
 
 	}
 
+	/** moves a piece from the bench array to the board array */
 	public void moveToBoard() {
 
 	}
 
+	/** sells a piece back for the price it was bought for */
 	public void sell() {
 
 	}
 
+	/** moves a piece from the board array to the bench array */
 	public void moveToBench() {
 
 	}
@@ -28,6 +52,7 @@ public class Chess {
 	// 2 human increases attack damage +15%
 	// 2 shaman increases attack speed +20%
 	// 2 elf increases attack speed +20% and attack damage +10%
+	/** constructs the class */
 	public Chess(String strName, int intLevel, int intAtkDmg, int intArmour, int intHealth, int intNum, int intAtkSpd,
 			String strClass, String strRace, boolean blnRanged) {
 		this.strName = strName;
