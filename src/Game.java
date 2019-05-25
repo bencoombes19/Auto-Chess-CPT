@@ -13,7 +13,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	static BufferedReader reader;
 	static Chess[] pieces = new Chess[15];
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intExp = 0, intBoard[], intBench[],
-			intGold = 1, intPieces, intPort = 3000;
+			intGold = 1, intPieces, intPort = 3000, intHealth = 100;
+	boolean blnServer;
 	static Chess[] roll = new Chess[5];
 	static Chess[] board;
 	static Chess[] bench = new Chess[8];
@@ -122,6 +123,12 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public void startGame() {
 		GameState = 1;
+		if(blnServer == true) {
+			ssm.sendText("code//" + Integer.toString(intGold)+ "," + Integer.toString(intHealth) + ","  +Integer.toString(intLevel));
+		}else {
+			ssm.sendText("code//" + Integer.toString(intGold)+ "," + Integer.toString(intHealth) + ","  +Integer.toString(intLevel));
+			
+		}
 
 	}
 
@@ -291,18 +298,22 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				panel.requestFocusInWindow();
 				GameState = 0;
 			}
-		}else if (GameState == 4) {
-			
-		}else if (GameState == 5) {
+		} else if (GameState == 4) {
+
+		} else if (GameState == 5) {
 			if (e.getX() >= 214 && e.getX() <= 501 && e.getY() >= 287 && e.getY() <= 433) {
 				ssm = new SuperSocketMaster(intPort, this);
+				blnServer = true;
+				startGame();
 			}
 			if (e.getX() >= 782 && e.getX() <= 1069 && e.getY() >= 287 && e.getY() <= 433) {
+				blnServer = false;
 				connection();
 			}
-		}else if (GameState == 6) {
+		} else if (GameState == 6) {
 			if (e.getX() >= 546 && e.getX() <= 727 && e.getY() >= 476 && e.getY() <= 554) {
 				ssm = new SuperSocketMaster(ipaddress.getText(), intPort, this);
+				startGame();
 			}
 		}
 	}
