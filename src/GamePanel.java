@@ -20,10 +20,12 @@ public class GamePanel extends JPanel {
 	BufferedImage options = null;
 	BufferedImage axe = null;
 	BufferedImage roll = null;
+	BufferedImage connection = null;
+	BufferedImage client = null;
 
 	public void paintComponent(Graphics g) {
 		try {
-			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("pixelart.ttf"));
+			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("pixelart1.otf"));
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(customFont);
 		
@@ -32,7 +34,7 @@ public class GamePanel extends JPanel {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Font font2 = new Font("ArcadeClassic", Font.TRUETYPE_FONT, 60);
+		Font font2 = new Font("My Font Regular", Font.TRUETYPE_FONT, 60);
 		Graphics2D g2 = (Graphics2D) g;
 		try {
 			// Importing the images
@@ -50,6 +52,8 @@ public class GamePanel extends JPanel {
 			options = ImageIO.read(new File("options.png"));
 			axe = ImageIO.read(new File("axe.png"));
 			roll = ImageIO.read(new File("roll.png"));
+			connection = ImageIO.read(new File("connection.png"));
+			client = ImageIO.read(new File("client.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -104,6 +108,10 @@ public class GamePanel extends JPanel {
 			g.drawImage(options, 0, 0, null);
 		} else if (Game.GameState == 4) {
 			g.drawImage(help, 0, 0, null);
+		} else if(Game.GameState == 5) {
+			g.drawImage(connection, 0, 0, null);
+		} else if(Game.GameState == 6) {
+			g.drawImage(client, 0, 0, null);
 		}
 	}
 

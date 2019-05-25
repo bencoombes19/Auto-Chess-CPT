@@ -8,9 +8,10 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	GamePanel panel;
 	Timer fps;
 	JTextField portoption;
+	JTextField ipaddress;
+	SuperSocketMaster ssm;
 	static BufferedReader reader;
 	static Chess[] pieces = new Chess[15];
-
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intExp = 0, intBoard[], intBench[],
 			intGold = 1, intPieces, intPort = 3000;
 	static Chess[] roll = new Chess[5];
@@ -19,7 +20,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public Game() {
 		try {
-			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("pixelart.ttf"));
+			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("pixelart1.otf"));
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(customFont);
 
@@ -32,9 +33,15 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		portoption.setBounds(590, 360, 100, 40);
 		portoption.setToolTipText("Port number used for the server 4 integers long");
 		portoption.setText(Integer.toString(intPort));
-		Font font2 = new Font("Pixel-Art Regular", Font.PLAIN, 20);
+		Font font2 = new Font("My Font Regular", Font.PLAIN, 20);
 		portoption.setFont(font2);
 		portoption.setVisible(false);
+		portoption.setEnabled(false);
+		ipaddress = new JTextField();
+		ipaddress.setBounds(455, 360, 363, 40);
+		ipaddress.setToolTipText("Enter IP address of the server");
+		ipaddress.setFont(font2);
+		ipaddress.setVisible(false);
 		panel = new GamePanel();
 		panel.setLayout(null);
 		frame = new JFrame("Game");
@@ -48,6 +55,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		fps = new Timer(1000 / 60, this);
 		fps.start();
 		panel.add(portoption);
+		panel.add(ipaddress);
 		panel.addMouseListener(this);
 		panel.addMouseMotionListener(this);
 		panel.requestFocusInWindow();
@@ -58,7 +66,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		if (GameState == 0) {
 			if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_ENTER) {
 				if (MenuOption == 0) {
-					roll();
+					GameState = 5;
 				} else if (MenuOption == 1) {
 					options();
 				} else if (MenuOption == 2) {
@@ -107,9 +115,13 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	}
 
+	public void connection() {
+		GameState = 6;
+		ipaddress.setVisible(true);
+	}
+
 	public void startGame() {
 		GameState = 1;
-	
 
 	}
 
@@ -135,6 +147,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	public void options() {
 		GameState = 3;
 		portoption.setVisible(true);
+		portoption.setEnabled(true);
 	}
 
 	public void help() {
@@ -194,7 +207,16 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	}
 
 	public void mousePressed(MouseEvent e) {
-		if (GameState == 2) {
+		if (GameState == 1) {
+			if (e.getX() >= 159 && e.getX() <= 279 && e.getY() >= 557 && e.getY() <= 671) {
+				for (int i = 0; i < intLevel; i++) {
+					if (board[i] == null) {
+						board[i] = bench[0];
+					}
+
+				}
+			}
+		} else if (GameState == 2) {
 			if (e.getX() >= 53 && e.getX() <= 267 && e.getY() >= 431 && e.getY() <= 523) {
 				for (int i = 0; i < bench.length; i++) {
 					if (bench[i] == null && intGold >= roll[0].intLevel) {
@@ -268,6 +290,19 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				portoption.setVisible(false);
 				panel.requestFocusInWindow();
 				GameState = 0;
+			}
+		}else if (GameState == 4) {
+			
+		}else if (GameState == 5) {
+			if (e.getX() >= 214 && e.getX() <= 501 && e.getY() >= 287 && e.getY() <= 433) {
+				ssm = new SuperSocketMaster(intPort, this);
+			}
+			if (e.getX() >= 782 && e.getX() <= 1069 && e.getY() >= 287 && e.getY() <= 433) {
+				connection();
+			}
+		}else if (GameState == 6) {
+			if (e.getX() >= 546 && e.getX() <= 727 && e.getY() >= 476 && e.getY() <= 554) {
+				ssm = new SuperSocketMaster(ipaddress.getText(), intPort, this);
 			}
 		}
 	}
