@@ -260,6 +260,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		} else {
 			ssm.sendText("start//" + Integer.toString(intGold) + "," + Integer.toString(intHealth) + ","
 					+ Integer.toString(intLevel));
+			gold.setText("GOLD: " + Integer.toString(intGold));
+			level.setText("LEVEL: " + Integer.toString(intLevel));
+			health.setText(Integer.toString(intHealth));
 
 		}
 
@@ -331,7 +334,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		}
 		if (e.getSource() == ssm) {
 			String strText = ssm.readText();
-			if (strText.substring(0, 6).equals("start//")) {
+			if (strText.substring(0, 7).equals("start//")) {
 				strText = strText.substring(7, strText.length());
 				String strSplit[] = strText.split(",");
 				intGold2 = Integer.parseInt(strSplit[0]);
@@ -469,6 +472,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		} else if (GameState == 5) {
 			if (e.getX() >= 214 && e.getX() <= 501 && e.getY() >= 287 && e.getY() <= 433) {
 				ssm = new SuperSocketMaster(intPort, this);
+				ssm.connect();
+				System.out.println(ssm.getMyAddress());
 				blnServer = true;
 				roll();
 			}
@@ -479,6 +484,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		} else if (GameState == 6) {
 			if (e.getX() >= 546 && e.getX() <= 727 && e.getY() >= 476 && e.getY() <= 554) {
 				ssm = new SuperSocketMaster(ipaddress.getText(), intPort, this);
+				ssm.connect();
 				ipaddress.setVisible(false);
 				ipaddress.setEnabled(false);
 				roll();
