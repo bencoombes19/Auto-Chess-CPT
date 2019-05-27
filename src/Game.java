@@ -457,6 +457,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		} else if (GameState == 6) {
 			if (e.getX() >= 546 && e.getX() <= 727 && e.getY() >= 476 && e.getY() <= 554) {
 				ssm = new SuperSocketMaster(ipaddress.getText(), intPort, this);
+				ipaddress.setVisible(false);
+				ipaddress.setEnabled(false);
 				roll();
 			}
 		}
