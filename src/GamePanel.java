@@ -22,19 +22,20 @@ public class GamePanel extends JPanel {
 	BufferedImage roll = null;
 	BufferedImage connection = null;
 	BufferedImage client = null;
+	BufferedImage pieceimgs[] = new BufferedImage[15];
 
 	public void paintComponent(Graphics g) {
 		try {
 			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("pixelart1.otf"));
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(customFont);
-		
+
 		} catch (FontFormatException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Font font2 = new Font("My Font Regular", Font.TRUETYPE_FONT, 60);
+		Font font2 = new Font("My Font Regular", Font.TRUETYPE_FONT, 36);
 		Graphics2D g2 = (Graphics2D) g;
 		try {
 			// Importing the images
@@ -50,13 +51,82 @@ public class GamePanel extends JPanel {
 			help1 = ImageIO.read(new File("help1.png"));
 			help2 = ImageIO.read(new File("help2.png"));
 			options = ImageIO.read(new File("options.png"));
-			axe = ImageIO.read(new File("axe.png"));
 			roll = ImageIO.read(new File("roll.png"));
 			connection = ImageIO.read(new File("connection.png"));
 			client = ImageIO.read(new File("client.png"));
+			for (int i = 0; i < 15; i++) {
+				pieceimgs[i] = ImageIO.read(new File(Game.pieces[i].strName + ".png"));
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		if (Game.GameState == 1) {
+			Game.health.setVisible(true);
+			Game.name.setVisible(true);
+			Game.gold.setVisible(true);
+			Game.level.setVisible(true);
+			Game.health2.setVisible(true);
+			Game.name2.setVisible(true);
+			Game.gold2.setVisible(true);
+			Game.level2.setVisible(true);
+			Game.roll1.setVisible(false);
+			Game.roll2.setVisible(false);
+			Game.roll3.setVisible(false);
+			Game.roll4.setVisible(false);
+			Game.roll5.setVisible(false);
+			Game.gold3.setVisible(false);
+		} else if (Game.GameState == 2) {
+			if (Game.blnroll1 == true) {
+				Game.roll1.setVisible(true);
+			}else {
+				Game.roll1.setVisible(false);
+			}
+			if (Game.blnroll2 == true) {
+				Game.roll2.setVisible(true);
+			}else {
+				Game.roll2.setVisible(false);
+			}
+			if (Game.blnroll3 == true) {
+				Game.roll3.setVisible(true);
+			}else {
+				Game.roll3.setVisible(false);
+			}
+			if (Game.blnroll4 == true) {
+				Game.roll4.setVisible(true);
+			}else {
+				Game.roll4.setVisible(false);
+			}
+			if (Game.blnroll5 == true) {
+				Game.roll5.setVisible(true);
+			}else {
+				Game.roll5.setVisible(false);
+			}
+
+			Game.gold3.setVisible(true);
+			Game.health.setVisible(false);
+			Game.name.setVisible(false);
+			Game.gold.setVisible(false);
+			Game.level.setVisible(false);
+			Game.health2.setVisible(false);
+			Game.name2.setVisible(false);
+			Game.gold2.setVisible(false);
+			Game.level2.setVisible(false);
+		} else {
+			Game.health.setVisible(false);
+			Game.name.setVisible(false);
+			Game.gold.setVisible(false);
+			Game.level.setVisible(false);
+			Game.health2.setVisible(false);
+			Game.name2.setVisible(false);
+			Game.gold2.setVisible(false);
+			Game.level2.setVisible(false);
+			Game.roll1.setVisible(false);
+			Game.roll2.setVisible(false);
+			Game.roll3.setVisible(false);
+			Game.roll4.setVisible(false);
+			Game.roll5.setVisible(false);
+			Game.gold3.setVisible(false);
 		}
 		// Start Screen
 		if (Game.GameState == 0) {
@@ -85,32 +155,41 @@ public class GamePanel extends JPanel {
 			}
 
 		} else if (Game.GameState == 1) {
+			int intWidth = (int) (Game.intHealth * 2.29);
+			int intWidth2 = (int) (Game.intHealth2 * 2.29);
 			g.drawImage(play, 0, 0, null);
-			g.drawImage(axe, 200, 200, null);
+			g.setColor(new Color(150, 2, 2));
+			g.fillRect(23, 120, intWidth, 22);
+			g.fillRect(23, 360, intWidth2, 22);
+			for (int i = 0; i < 8; i++) {
+				if (Game.bench[i] != null) {
+					g.drawImage(pieceimgs[Game.bench[i].intNum], 160 + 120 * i, 555, null);
+				}
+			}
 		} else if (Game.GameState == 2) {
-			g.setColor(Color.WHITE);
-			g.fillRect(0, 0, 1280, 720);
-			g.setColor(Color.BLACK);
 			g.drawImage(roll, 0, 0, null);
-			g.setFont(font2);
-			g.drawString(Game.roll[0].strName, 100, 230);
-			g.drawString(Game.roll[1].strName, 320, 230);
-			g.drawString(Game.roll[2].strName, 575, 230);
-			g.drawString(Game.roll[3].strName, 800, 230);
-			g.drawString(Game.roll[4].strName, 1055, 230);
-			g.drawString("Gold " + Game.intGold, 550, 130);
-			g.drawImage(axe, 100, 250, null);
-			g.drawImage(axe, 345, 250, null);
-			g.drawImage(axe, 590, 250, null);
-			g.drawImage(axe, 835, 250, null);
-			g.drawImage(axe, 1080, 250, null);
+			if (Game.blnroll1 == true) {
+				g.drawImage(pieceimgs[Game.roll[0].intNum], 103, 274, null);
+			}
+			if (Game.blnroll2 == true) {
+				g.drawImage(pieceimgs[Game.roll[1].intNum], 346, 274, null);
+			}
+			if (Game.blnroll3 == true) {
+				g.drawImage(pieceimgs[Game.roll[2].intNum], 589, 274, null);
+			}
+			if (Game.blnroll4 == true) {
+				g.drawImage(pieceimgs[Game.roll[3].intNum], 832, 274, null);
+			}
+			if (Game.blnroll5 == true) {
+				g.drawImage(pieceimgs[Game.roll[4].intNum], 1075, 274, null);
+			}
 		} else if (Game.GameState == 3) {
 			g.drawImage(options, 0, 0, null);
 		} else if (Game.GameState == 4) {
 			g.drawImage(help, 0, 0, null);
-		} else if(Game.GameState == 5) {
+		} else if (Game.GameState == 5) {
 			g.drawImage(connection, 0, 0, null);
-		} else if(Game.GameState == 6) {
+		} else if (Game.GameState == 6) {
 			g.drawImage(client, 0, 0, null);
 		}
 	}
