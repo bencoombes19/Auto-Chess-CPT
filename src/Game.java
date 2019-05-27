@@ -13,8 +13,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	SuperSocketMaster ssm;
 	static BufferedReader reader;
 	static Chess[] pieces = new Chess[15];
-	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intExp = 0, intBoard[], intBench[],
-			intGold = 5, intPieces, intPort = 3000, intHealth = 100, intGold2, intHealth2 = 100, intLevel2;
+	public static int MenuOption = 0, GameState = 0, intLevel = 8, intExpLeft = 1, intTotalExp = 1, intExp = 0,
+			intBoard[], intBench[], intGold = 30, intPieces, intPort = 3000, intHealth = 100, intGold2,
+			intHealth2 = 100, intLevel2;
 	public String strName = "Player1", strName2 = "Player2";
 	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true;;
 	static Chess[] roll = new Chess[5];
@@ -200,7 +201,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				}
 			}
 		} else if (GameState == 1) {
-			if (e.getKeyCode() == KeyEvent.VK_F) {
+			if (e.getKeyCode() == KeyEvent.VK_F && intLevel < 8) {
 				if (intGold >= 5) {
 					intGold = intGold - 5;
 					intExp = intExp + 4;
@@ -209,16 +210,33 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 						intExp = intExp + (4 - intExpLeft);
 						intLevel = intLevel + 1;
 						if (intLevel == 2) {
-							intExpLeft = 1;
+							intTotalExp = 1;
+							intExpLeft = intTotalExp;
 						} else {
-							intExpLeft = intExpLeft * 2;
+							intTotalExp = intTotalExp * 2;
+							intExpLeft = intTotalExp;
 						}
 					} else {
 						intExpLeft = intExpLeft - 4;
+						intExp = 0;
 					}
 				} else {
-
 				}
+				for (int i = 0; i < 2; i++) {
+					if (intExp >= intExpLeft) {
+						intExp = intExp - intExpLeft;
+						intLevel = intLevel + 1;
+						if (intLevel == 2) {
+							intTotalExp = 1;
+							intExpLeft = intTotalExp;
+						} else {
+							intTotalExp = intTotalExp * 2;
+							intExpLeft = intTotalExp;
+						}
+					}
+				}
+				gold.setText("GOLD: " + Integer.toString(intGold));
+				level.setText("LEVEL: " + Integer.toString(intLevel));
 			}
 		}
 
@@ -319,6 +337,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				intGold2 = Integer.parseInt(strSplit[0]);
 				intHealth2 = Integer.parseInt(strSplit[1]);
 				intLevel2 = Integer.parseInt(strSplit[2]);
+				gold2.setText("GOLD: " + Integer.toString(intGold2));
+				level2.setText("LEVEL: " + Integer.toString(intLevel2));
+				health2.setText(Integer.toString(intHealth2));
 			} else if (strText.substring(0, 5).equals("name//")) {
 				strText = strText.substring(6, strText.length());
 				strName2 = strText;
@@ -349,17 +370,18 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public void mousePressed(MouseEvent e) {
 		if (GameState == 1) {
-			if (e.getX() >= 160 && e.getX() <= 280 && e.getY() >= 554 && e.getY() <= 674) {
-				if(bench[0] != null) {
-					for(int i = 0; i < intLevel; i++) {
-						if(board[i] == null) {
-							board[i] = bench[0];
-							bench[0] = null;
-							i = intLevel + 1;
+			for (int i = 0; i < 8; i++) {
+				if (e.getX() >= 160 + 120 * i && e.getX() <= 280 + 120 * i && e.getY() >= 554 && e.getY() <= 674) {
+					if (bench[i] != null) {
+						for (int i2 = 0; i2 < intLevel; i2++) {
+							if (board[i2] == null) {
+								board[i2] = bench[i];
+								bench[i] = null;
+								i2 = intLevel + 1;
+							}
 						}
 					}
 				}
-				
 			}
 		} else if (GameState == 2) {
 			if (e.getX() >= 53 && e.getX() <= 267 && e.getY() >= 431 && e.getY() <= 523 && blnroll1 == true) {

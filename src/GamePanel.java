@@ -79,27 +79,27 @@ public class GamePanel extends JPanel {
 		} else if (Game.GameState == 2) {
 			if (Game.blnroll1 == true) {
 				Game.roll1.setVisible(true);
-			}else {
+			} else {
 				Game.roll1.setVisible(false);
 			}
 			if (Game.blnroll2 == true) {
 				Game.roll2.setVisible(true);
-			}else {
+			} else {
 				Game.roll2.setVisible(false);
 			}
 			if (Game.blnroll3 == true) {
 				Game.roll3.setVisible(true);
-			}else {
+			} else {
 				Game.roll3.setVisible(false);
 			}
 			if (Game.blnroll4 == true) {
 				Game.roll4.setVisible(true);
-			}else {
+			} else {
 				Game.roll4.setVisible(false);
 			}
 			if (Game.blnroll5 == true) {
 				Game.roll5.setVisible(true);
-			}else {
+			} else {
 				Game.roll5.setVisible(false);
 			}
 
@@ -164,6 +164,15 @@ public class GamePanel extends JPanel {
 			for (int i = 0; i < 8; i++) {
 				if (Game.bench[i] != null) {
 					g.drawImage(pieceimgs[Game.bench[i].intNum], 160 + 120 * i, 555, null);
+				}
+			}
+			for (int i = 0; i < Game.board.length; i++) {
+				if (Game.board[i] != null) {
+					if (i < 4) {
+						g.drawImage(pieceimgs[Game.board[i].intNum], 400 + 120 * i, 270, null);
+					}else {
+						g.drawImage(pieceimgs[Game.board[i].intNum], -80 + 120 * i, 390, null);
+					}
 				}
 			}
 		} else if (Game.GameState == 2) {
