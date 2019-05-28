@@ -262,7 +262,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	public void mainGame() {
 		int intDamage = 0, intHealthP = 0, intArmour = 0;
 		intDamage2 = 0;
-		intHealth2 = 0;
+		intHealthP2 = 0;
 		intArmour2 = 0;
 		for (int i = 0; i < intLevel; i++) {
 			intDamage = intDamage + board[i].intAtkDmg * board[i].intAtkSpd;
@@ -270,10 +270,10 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			intHealthP = intHealthP + board[i].intHealth;
 		}
 		if (blnServer = true) {
-			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealth * intArmour) {
-				intHealth2 = intHealth2 - ((intDamage - intDamage2 / 500) + 1);
+			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
+				intHealthP2 = intHealthP2 - ((intDamage - intDamage2 / 500) + 1);
 			} else {
-				intHealth = intHealth - ((intDamage2 - intDamage / 500) + 1);
+				intHealthP = intHealthP - ((intDamage2 - intDamage / 500) + 1);
 			}
 		} else {
 			ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + "," + Integer.toString(intHealthP));
