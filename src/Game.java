@@ -271,9 +271,13 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		}
 		if (blnServer = true) {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
-				intHealthP2 = intHealthP2 - ((intDamage - intDamage2 / 500) + 1);
+				intHealth2 = intHealth2 - ((intDamage - intDamage2 / 500) + 1);
+				health2.setText(Integer.toString(intHealth2));
+				ssm.sendText("health2//" + Integer.toString(intHealth2));
 			} else {
-				intHealthP = intHealthP - ((intDamage2 - intDamage / 500) + 1);
+				intHealth = intHealth - ((intDamage2 - intDamage / 500) + 1);
+				health.setText(Integer.toString(intHealth));
+				ssm.sendText("health//" + Integer.toString(intHealth));
 			}
 		} else {
 			ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + "," + Integer.toString(intHealthP));
