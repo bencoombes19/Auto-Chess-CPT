@@ -375,7 +375,13 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				intDamage2 = Integer.parseInt(strSplit[0]);
 				intArmour2 = Integer.parseInt(strSplit[1]);
 				intHealthP2 = Integer.parseInt(strSplit[2]);
-			}
+			} else if(strText.substring(0,8).equals("health//")) {
+				intHealth  = Integer.parseInt(strText.substring(8, strText.length()));
+				health.setText(Integer.toString(intHealth));
+			} else if(strText.substring(0,9).equals("health2//")) {
+				intHealth2 = Integer.parseInt(strText.substring(9, strText.length()));
+				health2.setText(Integer.toString(intHealth2));
+			} 
 
 		}
 	}
