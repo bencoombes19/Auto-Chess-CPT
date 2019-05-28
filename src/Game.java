@@ -13,11 +13,12 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	SuperSocketMaster ssm;
 	static BufferedReader reader;
 	static Chess[] pieces = new Chess[15];
-	public static int MenuOption = 0, GameState = 0, intLevel = 8, intExpLeft = 1, intTotalExp = 1, intExp = 0,
+	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intTotalExp = 1, intExp = 0,
 			intBoard[], intBench[], intGold = 30, intPieces, intPort = 3000, intHealth = 100, intGold2,
-			intHealth2 = 100, intLevel2;
+			intHealth2 = 100, intLevel2, intDamage2, intHealthP2, intArmour2;
 	public String strName = "Player1", strName2 = "Player2";
-	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true;;
+	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true,
+			blnReady = false, blnReady2 = false;
 	static Chess[] roll = new Chess[5];
 	static Chess[] board = new Chess[1];
 	static Chess[] bench = new Chess[8];
@@ -235,6 +236,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 						}
 					}
 				}
+				board = Arrays.copyOf(board, intLevel);
 				gold.setText("GOLD: " + Integer.toString(intGold));
 				level.setText("LEVEL: " + Integer.toString(intLevel));
 			}
@@ -249,23 +251,33 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public void startGame() {
 		GameState = 1;
-		if (blnServer == true) {
-			ssm.sendText("start//" + Integer.toString(intGold) + "," + Integer.toString(intHealth) + ","
-					+ Integer.toString(intLevel));
-			board = Arrays.copyOf(board, intLevel);
-			gold.setText("GOLD: " + Integer.toString(intGold));
-			level.setText("LEVEL: " + Integer.toString(intLevel));
-			health.setText(Integer.toString(intHealth));
+		ssm.sendText("start//" + Integer.toString(intGold) + "," + Integer.toString(intHealth) + ","
+				+ Integer.toString(intLevel));
+		board = Arrays.copyOf(board, intLevel);
+		gold.setText("GOLD: " + Integer.toString(intGold));
+		level.setText("LEVEL: " + Integer.toString(intLevel));
+		health.setText(Integer.toString(intHealth));
+	}
 
-		} else {
-			ssm.sendText("start//" + Integer.toString(intGold) + "," + Integer.toString(intHealth) + ","
-					+ Integer.toString(intLevel));
-			gold.setText("GOLD: " + Integer.toString(intGold));
-			level.setText("LEVEL: " + Integer.toString(intLevel));
-			health.setText(Integer.toString(intHealth));
-
+	public void mainGame() {
+		int intDamage = 0, intHealthP = 0, intArmour = 0;
+		intDamage2 = 0;
+		intHealth2 = 0;
+		intArmour2 = 0;
+		for (int i = 0; i < intLevel; i++) {
+			intDamage = intDamage + board[i].intAtkDmg * board[i].intAtkSpd;
+			intArmour = intArmour + board[i].intArmour;
+			intHealthP = intHealthP + board[i].intHealth;
 		}
-
+		if (blnServer = true) {
+			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealth * intArmour) {
+				intHealth2 = intHealth2 - ((intDamage - intDamage2 / 500) + 1);
+			} else {
+				intHealth = intHealth - ((intDamage2 - intDamage / 500) + 1);
+			}
+		} else {
+			ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + "," + Integer.toString(intHealthP));
+		}
 	}
 
 	public void roll() {
@@ -343,9 +355,22 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				gold2.setText("GOLD: " + Integer.toString(intGold2));
 				level2.setText("LEVEL: " + Integer.toString(intLevel2));
 				health2.setText(Integer.toString(intHealth2));
-			} else if (strText.substring(0, 5).equals("name//")) {
+			} else if (strText.substring(0, 6).equals("name//")) {
 				strText = strText.substring(6, strText.length());
 				strName2 = strText;
+			} else if (strText.equals("ready//")) {
+				if (blnReady = true) {
+					mainGame();
+				} else {
+					blnReady2 = true;
+				}
+
+			} else if (strText.substring(0,13).equals("calculation//")) {
+				strText.substring(7, strText.length());
+				String strSplit[] = strText.split(",");
+				intDamage2 = Integer.parseInt(strSplit[0]);
+				intArmour2 = Integer.parseInt(strSplit[1]);
+				intHealthP2 = Integer.parseInt(strSplit[2]);
 			}
 
 		}
@@ -384,6 +409,13 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 							}
 						}
 					}
+				}
+			}
+			if (e.getX() >= 1022 && e.getX() <= 1257 && e.getY() >= 443 && e.getY() <= 510 && blnReady == false) {
+				blnReady = true;
+				ssm.sendText("ready//");
+				if (blnReady2 = true) {
+					mainGame();
 				}
 			}
 		} else if (GameState == 2) {
