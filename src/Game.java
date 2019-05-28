@@ -369,7 +369,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 					blnReady2 = true;
 				}
 
-			} else if (strText.substring(0,13).equals("calculation//")) {
+			} else if (strText.substring(0,13).equals("calculation//") && strText.length() > 12) {
 				strText.substring(7, strText.length());
 				String strSplit[] = strText.split(",");
 				intDamage2 = Integer.parseInt(strSplit[0]);

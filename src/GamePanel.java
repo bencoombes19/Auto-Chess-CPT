@@ -57,7 +57,6 @@ public class GamePanel extends JPanel {
 			for (int i = 0; i < 15; i++) {
 				pieceimgs[i] = ImageIO.read(new File(Game.pieces[i].strName + ".png"));
 			}
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
