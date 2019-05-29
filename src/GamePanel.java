@@ -68,6 +68,7 @@ public class GamePanel extends JPanel {
 			Game.name2.setVisible(true);
 			Game.gold2.setVisible(true);
 			Game.level2.setVisible(true);
+			Game.statusbar.setVisible(true);
 			Game.roll1.setVisible(false);
 			Game.roll2.setVisible(false);
 			Game.roll3.setVisible(false);
@@ -114,6 +115,7 @@ public class GamePanel extends JPanel {
 			Game.name2.setVisible(false);
 			Game.gold2.setVisible(false);
 			Game.level2.setVisible(false);
+			Game.statusbar.setVisible(false);
 		} else {
 			Game.health.setVisible(false);
 			Game.name.setVisible(false);
@@ -123,6 +125,7 @@ public class GamePanel extends JPanel {
 			Game.name2.setVisible(false);
 			Game.gold2.setVisible(false);
 			Game.level2.setVisible(false);
+			Game.statusbar.setVisible(false);
 			Game.roll1.setVisible(false);
 			Game.roll2.setVisible(false);
 			Game.roll3.setVisible(false);

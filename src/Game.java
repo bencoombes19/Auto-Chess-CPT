@@ -9,7 +9,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	GamePanel panel;
 	Timer fps;
 	JTextField portoption, ipaddress;
-	static JLabel gold, health, name, level, gold2, health2, name2, level2, roll1, roll2, roll3, roll4, roll5, gold3;
+	static JLabel gold, health, name, level, gold2, health2, name2, level2, roll1, roll2, roll3, roll4, roll5, gold3, statusbar;
 	static SuperSocketMaster ssm;
 	static BufferedReader reader;
 	static Chess[] pieces = new Chess[15];
@@ -148,7 +148,14 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		gold3.setForeground(Color.BLACK);
 		gold3.setHorizontalAlignment(JLabel.CENTER);
 		gold3.setVerticalAlignment(JLabel.CENTER);
+		
+		statusbar = new JLabel("y13726786872t58761278561278");
+		statusbar.setFont(font);
+		statusbar.setBounds(282,519, 716, 26);
+		statusbar.setForeground(new Color(150,2,2));
+		statusbar.setHorizontalAlignment(JLabel.CENTER);
 
+		panel.add(statusbar);
 		panel.add(gold3);
 		panel.add(roll1);
 		panel.add(roll2);
@@ -289,6 +296,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				ssm.sendText("health//" + Integer.toString(intHealth));
 			}
 		}
+		
 	}
 
 	public void roll() {
@@ -323,7 +331,6 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public void help() {
 		GameState = 4;
-
 	}
 
 	public static void main(String[] args) {
@@ -370,6 +377,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				strText = strText.substring(6, strText.length());
 				strName2 = strText;
 			} else if (strText.equals("ready//")) {
+				statusbar.setText(strName2 + " has readied up");
 				blnReady2 = true;
 
 			} else if (strText.substring(0,13).equals("calculation//") && strText.length() > 13) {
@@ -427,6 +435,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			}
 			if (e.getX() >= 1022 && e.getX() <= 1257 && e.getY() >= 443 && e.getY() <= 510) {
 				System.out.println("ready");
+				statusbar.setText(strName + " has readied up");
 				ssm.sendText("ready//");
 				blnReady = true;
 			}
