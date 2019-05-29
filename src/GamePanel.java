@@ -75,6 +75,9 @@ public class GamePanel extends JPanel {
 			Game.roll4.setVisible(false);
 			Game.roll5.setVisible(false);
 			Game.gold3.setVisible(false);
+			if(Game.blnReady == true && Game.blnReady2 == true && Game.blnRoundStart == false) {
+				Game.mainGame();
+			}
 		} else if (Game.GameState == 2) {
 			if (Game.blnroll1 == true) {
 				Game.roll1.setVisible(true);
