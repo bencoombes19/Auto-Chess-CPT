@@ -74,7 +74,7 @@ public class GamePanel extends JPanel {
 			Game.roll4.setVisible(false);
 			Game.roll5.setVisible(false);
 			Game.gold3.setVisible(false);
-			if(Game.blnReady == true && Game.blnReady2 == true && Game.blnRoundStart == false) {
+			if (Game.blnReady == true && Game.blnReady2 == true && Game.blnRoundStart == false) {
 				System.out.println("game.maingame");
 				Game.mainGame();
 			}
@@ -172,7 +172,7 @@ public class GamePanel extends JPanel {
 				if (Game.board[i] != null) {
 					if (i < 4) {
 						g.drawImage(pieceimgs[Game.board[i].intNum], 400 + 120 * i, 270, null);
-					}else {
+					} else {
 						g.drawImage(pieceimgs[Game.board[i].intNum], -80 + 120 * i, 390, null);
 					}
 				}

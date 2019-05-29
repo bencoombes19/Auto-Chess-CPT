@@ -266,22 +266,28 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		intArmour2 = 0;
 		blnRoundStart = true;
 		for (int i = 0; i < intLevel; i++) {
-			intDamage = intDamage + board[i].intAtkDmg * board[i].intAtkSpd;
-			intArmour = intArmour + board[i].intArmour;
-			intHealthP = intHealthP + board[i].intHealth;
+			if (board[i] != null) {
+				intDamage = intDamage + board[i].intAtkDmg * board[i].intAtkSpd;
+				intArmour = intArmour + board[i].intArmour;
+				intHealthP = intHealthP + board[i].intHealth;
+			}
+		}
+		if(blnServer == false) {
+			ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + ","
+					+ Integer.toString(intHealthP));
 		}
 		if (blnServer == true) {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
-				intHealthP2 = intHealthP2 - ((intDamage - intDamage2 / 500) + 1);
+				intHealth2 = intHealth2 - ((intDamage - intDamage2) / 500) + 1;
+				System.out.println(intHealth2 + "," + intDamage + "," + intDamage2);
 				health2.setText(Integer.toString(intHealth2));
 				ssm.sendText("health2//" + Integer.toString(intHealth2));
 			} else {
-				intHealthP = intHealthP - ((intDamage2 - intDamage / 500) + 1);
+				intHealth = intHealth - ((intDamage2 - intDamage / 500) + 1);
+				System.out.println(intHealthP);
 				health.setText(Integer.toString(intHealth));
 				ssm.sendText("health//" + Integer.toString(intHealth));
 			}
-		} else {
-			ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + "," + Integer.toString(intHealthP));
 		}
 	}
 
@@ -372,13 +378,13 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				intDamage2 = Integer.parseInt(strSplit[0]);
 				intArmour2 = Integer.parseInt(strSplit[1]);
 				intHealthP2 = Integer.parseInt(strSplit[2]);
-			} else if(strText.substring(0,8).equals("health//")) {
-				intHealth  = Integer.parseInt(strText.substring(8, strText.length()));
+			} else if (strText.substring(0, 8).equals("health//")) {
+				intHealth = Integer.parseInt(strText.substring(8, strText.length()));
 				health.setText(Integer.toString(intHealth));
-			} else if(strText.substring(0,9).equals("health2//")) {
+			} else if (strText.substring(0, 9).equals("health2//")) {
 				intHealth2 = Integer.parseInt(strText.substring(9, strText.length()));
 				health2.setText(Integer.toString(intHealth2));
-			} 
+			}
 
 		}
 	}
