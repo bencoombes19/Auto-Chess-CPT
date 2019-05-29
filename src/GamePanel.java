@@ -18,7 +18,6 @@ public class GamePanel extends JPanel {
 	BufferedImage help1 = null;
 	BufferedImage help2 = null;
 	BufferedImage options = null;
-	BufferedImage axe = null;
 	BufferedImage roll = null;
 	BufferedImage connection = null;
 	BufferedImage client = null;
@@ -76,6 +75,7 @@ public class GamePanel extends JPanel {
 			Game.roll5.setVisible(false);
 			Game.gold3.setVisible(false);
 			if(Game.blnReady == true && Game.blnReady2 == true && Game.blnRoundStart == false) {
+				System.out.println("game.maingame");
 				Game.mainGame();
 			}
 		} else if (Game.GameState == 2) {
