@@ -317,9 +317,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + ","
 				+ Integer.toString(intHealthP));
 		try {
-			Thread.sleep(3500);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 		if (blnServer == true) {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
@@ -447,7 +447,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				System.out.println(intShowScreen);
 			intShowScreen++;
 			}
-			if (intShowScreen > 180) {
+			if (intShowScreen > 100) {
 				intShowScreen = 0;
 				blnShowLabel = false;
 				roll();
