@@ -17,10 +17,10 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intTotalExp = 1, intExp = 0,
 			intBoard[], intBench[], intGold = 30, intPieces, intPort = 3000, intHealth = 100, intGold2,
 			intHealth2 = 100, intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour,
-			intRoundNum = 0;
+			intRoundNum = 0, intShowScreen = 0;
 	public static String strName = "Player1", strName2 = "Player2", board2[];
 	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true,
-			blnReady = false, blnReady2 = false, blnRoundStart = false;
+			blnReady = false, blnReady2 = false, blnRoundStart = false, blnShowLabel = false;
 	static Chess[] roll = new Chess[5];
 	static Chess[] board = new Chess[1];
 	static Chess[] bench = new Chess[8];
@@ -323,18 +323,22 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		}
 		if (blnServer == true) {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
-				intHealth2 = intHealth2 - ((intDamage - intDamage2) / 500) + 1;
+				intHealth2 = intHealth2 - (((intDamage - intDamage2) / 500) + 1);
 				System.out.println(intHealth2 + "," + intDamage + "," + intDamage2);
 				health2.setText(Integer.toString(intHealth2));
 				ssm.sendText("health2//" + Integer.toString(intHealth2));
 				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
+				blnShowLabel = true;
+				
 				intGold = intGold + 1;
 			} else {
-				intHealth = intHealth - ((intDamage2 - intDamage) / 500) + 1;
+				intHealth = intHealth - (((intDamage2 - intDamage) / 500) + 1);
 				System.out.println(intHealthP);
 				health.setText(Integer.toString(intHealth));
 				ssm.sendText("health//" + Integer.toString(intHealth));
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
+				blnShowLabel = true;
+				
 			}
 		}
 		intExp = intExp + 1;
@@ -372,12 +376,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		} else if (intGold >= 50) {
 			intGold = intGold + 5;
 		}
-		try {
-			Thread.sleep(3500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		roll();
+		
+		System.out.println(intShowScreen);
+		
 	}
 
 	public static void roll() {
@@ -442,6 +443,16 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == fps) {
 			panel.repaint();
+			if(blnShowLabel == true) {
+				System.out.println(intShowScreen);
+			intShowScreen++;
+			}
+			if (intShowScreen > 180) {
+				intShowScreen = 0;
+				blnShowLabel = false;
+				roll();
+
+			}
 		}
 		if (e.getSource() == ssm) {
 			String strText = ssm.readText();
@@ -477,7 +488,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				intHealth2 = Integer.parseInt(strText.substring(9, strText.length()));
 				health2.setText(Integer.toString(intHealth2));
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
-			} else if (strText.substring(0,8).equals("pieces//")) {
+			} else if (strText.substring(0, 8).equals("pieces//")) {
 				strText = strText.substring(8, strText.length());
 			}
 
