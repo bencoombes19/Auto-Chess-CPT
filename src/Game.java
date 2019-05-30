@@ -9,14 +9,16 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	GamePanel panel;
 	Timer fps;
 	JTextField portoption, ipaddress;
-	static JLabel gold, health, name, level, gold2, health2, name2, level2, roll1, roll2, roll3, roll4, roll5, gold3, statusbar;
+	static JLabel gold, health, name, level, gold2, health2, name2, level2, roll1, roll2, roll3, roll4, roll5, gold3,
+			statusbar;
 	static SuperSocketMaster ssm;
 	static BufferedReader reader;
 	static Chess[] pieces = new Chess[15];
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intTotalExp = 1, intExp = 0,
 			intBoard[], intBench[], intGold = 30, intPieces, intPort = 3000, intHealth = 100, intGold2,
-			intHealth2 = 100, intLevel2, intDamage2, intHealthP2, intArmour2;
-	public String strName = "Player1", strName2 = "Player2";
+			intHealth2 = 100, intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour,
+			intRoundNum = 0;
+	public static String strName = "Player1", strName2 = "Player2", board2[];
 	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true,
 			blnReady = false, blnReady2 = false, blnRoundStart = false;
 	static Chess[] roll = new Chess[5];
@@ -148,11 +150,11 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		gold3.setForeground(Color.BLACK);
 		gold3.setHorizontalAlignment(JLabel.CENTER);
 		gold3.setVerticalAlignment(JLabel.CENTER);
-		
-		statusbar = new JLabel("y13726786872t58761278561278");
+
+		statusbar = new JLabel();
 		statusbar.setFont(font);
-		statusbar.setBounds(282,519, 716, 26);
-		statusbar.setForeground(new Color(150,2,2));
+		statusbar.setBounds(282, 519, 716, 26);
+		statusbar.setForeground(new Color(150, 2, 2));
 		statusbar.setHorizontalAlignment(JLabel.CENTER);
 
 		panel.add(statusbar);
@@ -267,11 +269,49 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public static void mainGame() {
 		System.out.println("mainGame");
-		int intDamage = 0, intHealthP = 0, intArmour = 0;
+		if (intLevel == 1) {
+			ssm.sendText("pieces//" + Integer.toString(board[0].intNum));
+		} else if (intLevel == 2) {
+			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum));
+		} else if (intLevel == 3) {
+			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
+					+ Integer.toString(board[2].intNum));
+		} else if (intLevel == 4) {
+			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
+					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum));
+		} else if (intLevel == 5) {
+			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
+					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
+					+ Integer.toString(board[4].intNum));
+		} else if (intLevel == 6) {
+			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
+					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
+					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum));
+		} else if (intLevel == 7) {
+			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
+					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
+					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum) + ","
+					+ Integer.toString(board[6].intNum));
+		} else if (intLevel == 8) {
+			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
+					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
+					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum) + ","
+					+ Integer.toString(board[6].intNum) + "," + Integer.toString(board[7].intNum));
+		}
+		intRoundNum = intRoundNum + 1;
+		intDamage = 0;
+		intHealthP = 0;
+		intArmour = 0;
 		intDamage2 = 0;
 		intHealthP2 = 0;
 		intArmour2 = 0;
 		blnRoundStart = true;
+		statusbar.setText("Round in progress calculating winner");
+		try {
+			Thread.sleep(3500);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		for (int i = 0; i < intLevel; i++) {
 			if (board[i] != null) {
 				intDamage = intDamage + board[i].intAtkDmg * board[i].intAtkSpd;
@@ -279,27 +319,69 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				intHealthP = intHealthP + board[i].intHealth;
 			}
 		}
-		if(blnServer == false) {
-			ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + ","
-					+ Integer.toString(intHealthP));
-		}
+		ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + ","
+				+ Integer.toString(intHealthP));
+
 		if (blnServer == true) {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
 				intHealth2 = intHealth2 - ((intDamage - intDamage2) / 500) + 1;
 				System.out.println(intHealth2 + "," + intDamage + "," + intDamage2);
 				health2.setText(Integer.toString(intHealth2));
 				ssm.sendText("health2//" + Integer.toString(intHealth2));
+				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
+				intGold = intGold + 1;
 			} else {
 				intHealth = intHealth - ((intDamage2 - intDamage / 500) + 1);
 				System.out.println(intHealthP);
 				health.setText(Integer.toString(intHealth));
 				ssm.sendText("health//" + Integer.toString(intHealth));
+				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
 			}
 		}
-		
+		intExp = intExp + 1;
+		if (1 == intExpLeft) {
+			intLevel = intLevel + 1;
+			intExp = 0;
+			if (intLevel == 2) {
+				intTotalExp = 1;
+				intExpLeft = intTotalExp;
+			} else {
+				intTotalExp = intTotalExp * 2;
+				intExpLeft = intTotalExp;
+			}
+		} else {
+			intExpLeft = intExpLeft - 1;
+			intExp = 0;
+		}
+		if (intRoundNum == 1) {
+			intGold = intGold + 2;
+		} else if (intRoundNum == 2) {
+			intGold = intGold + 3;
+		} else if (intRoundNum == 4) {
+			intGold = intGold + 4;
+		} else {
+			intGold = intGold + 5;
+		}
+		if (intGold >= 10 && intGold < 20) {
+			intGold = intGold + 1;
+		} else if (intGold >= 20 && intGold < 30) {
+			intGold = intGold + 2;
+		} else if (intGold >= 30 && intGold < 40) {
+			intGold = intGold + 3;
+		} else if (intGold >= 40 && intGold < 50) {
+			intGold = intGold + 4;
+		} else if (intGold >= 50) {
+			intGold = intGold + 5;
+		}
+		try {
+			Thread.sleep(3500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		roll();
 	}
 
-	public void roll() {
+	public static void roll() {
 		int intRand = 0;
 		for (int i = 0; i < 5; i++) {
 			if (intLevel == 1 || intLevel == 2) {
@@ -380,7 +462,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				statusbar.setText(strName2 + " has readied up");
 				blnReady2 = true;
 
-			} else if (strText.substring(0,13).equals("calculation//") && strText.length() > 13) {
+			} else if (strText.substring(0, 13).equals("calculation//") && strText.length() > 13) {
 				System.out.println("calculation");
 				strText = strText.substring(13, strText.length());
 				String strSplit[] = strText.split(",");
@@ -390,9 +472,14 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			} else if (strText.substring(0, 8).equals("health//")) {
 				intHealth = Integer.parseInt(strText.substring(8, strText.length()));
 				health.setText(Integer.toString(intHealth));
+				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
+				intGold = intGold + 1;
 			} else if (strText.substring(0, 9).equals("health2//")) {
 				intHealth2 = Integer.parseInt(strText.substring(9, strText.length()));
 				health2.setText(Integer.toString(intHealth2));
+				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
+			} else if (strText.substring(0,8).equals("pieces//")) {
+				strText = strText.substring(8, strText.length());
 			}
 
 		}
@@ -421,7 +508,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	public void mousePressed(MouseEvent e) {
 		if (GameState == 1) {
 			for (int i = 0; i < 8; i++) {
-				if (e.getX() >= 160 + 120 * i && e.getX() <= 280 + 120 * i && e.getY() >= 554 && e.getY() <= 674) {
+				if (e.getX() >= 160 + 120 * i && e.getX() <= 280 + 120 * i && e.getY() >= 554 && e.getY() <= 674
+						&& e.getButton() == 1) {
 					if (bench[i] != null) {
 						for (int i2 = 0; i2 < intLevel; i2++) {
 							if (board[i2] == null) {
@@ -430,6 +518,17 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 								i2 = intLevel + 1;
 							}
 						}
+					}
+				}
+				if (e.getX() >= 160 + 120 * i && e.getX() <= 280 + 120 * i && e.getY() >= 554 && e.getY() <= 674
+						&& e.getButton() == 3) {
+					if (bench[i] != null) {
+						intGold = intGold + bench[i].intLevel;
+						gold.setText("GOLD: " + Integer.toString(intGold));
+						ssm.sendText("start//" + Integer.toString(intGold) + "," + Integer.toString(intHealth) + ","
+								+ Integer.toString(intLevel));
+						bench[i] = null;
+
 					}
 				}
 			}
