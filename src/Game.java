@@ -307,11 +307,6 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		intArmour2 = 0;
 		blnRoundStart = true;
 		statusbar.setText("Round in progress calculating winner");
-		try {
-			Thread.sleep(3500);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
 		for (int i = 0; i < intLevel; i++) {
 			if (board[i] != null) {
 				intDamage = intDamage + board[i].intAtkDmg * board[i].intAtkSpd;
@@ -321,7 +316,11 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		}
 		ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + ","
 				+ Integer.toString(intHealthP));
-
+		try {
+			Thread.sleep(3500);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		if (blnServer == true) {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
 				intHealth2 = intHealth2 - ((intDamage - intDamage2) / 500) + 1;
@@ -331,7 +330,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
 				intGold = intGold + 1;
 			} else {
-				intHealth = intHealth - ((intDamage2 - intDamage / 500) + 1);
+				intHealth = intHealth - ((intDamage2 - intDamage) / 500) + 1;
 				System.out.println(intHealthP);
 				health.setText(Integer.toString(intHealth));
 				ssm.sendText("health//" + Integer.toString(intHealth));
@@ -462,7 +461,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				statusbar.setText(strName2 + " has readied up");
 				blnReady2 = true;
 
-			} else if (strText.substring(0, 13).equals("calculation//") && strText.length() > 13) {
+			} else if (strText.contains("calculation//") && strText.length() > 13) {
 				System.out.println("calculation");
 				strText = strText.substring(13, strText.length());
 				String strSplit[] = strText.split(",");
