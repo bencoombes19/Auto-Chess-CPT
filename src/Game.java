@@ -483,11 +483,13 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				intHealth = Integer.parseInt(strText.substring(8, strText.length()));
 				health.setText(Integer.toString(intHealth));
 				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
+				blnShowLabel = true;
 				intGold = intGold + 1;
 			} else if (strText.substring(0, 9).equals("health2//")) {
 				intHealth2 = Integer.parseInt(strText.substring(9, strText.length()));
 				health2.setText(Integer.toString(intHealth2));
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
+				blnShowLabel = true;
 			} else if (strText.substring(0, 8).equals("pieces//")) {
 				strText = strText.substring(8, strText.length());
 			}
