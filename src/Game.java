@@ -383,8 +383,14 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public static void roll() {
 		int intRand = 0;
+		blnroll1 = true;
+		blnroll2 = true;
+		blnroll3 = true;
+		blnroll4 = true;
+		blnroll5 = true;
 		for (int i = 0; i < 5; i++) {
 			if (intLevel == 1 || intLevel == 2) {
+				System.out.println("roll");
 				intRand = (int) (Math.random() * 5);
 			} else if (intLevel == 3 || intLevel == 4) {
 				intRand = (int) (Math.random() * 9);
@@ -393,7 +399,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			} else {
 				intRand = (int) (Math.random() * 15);
 			}
-
+			roll[i] = null;
 			roll[i] = pieces[intRand];
 		}
 		roll1.setText(roll[0].strName.toUpperCase());
