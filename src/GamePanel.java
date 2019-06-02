@@ -23,7 +23,7 @@ public class GamePanel extends JPanel {
 	BufferedImage client = null;
 	BufferedImage pieceimgs[] = new BufferedImage[15];
 
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g) throws NullPointerException {
 		try {
 			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("pixelart1.otf"));
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -75,10 +75,7 @@ public class GamePanel extends JPanel {
 			Game.roll4.setVisible(false);
 			Game.roll5.setVisible(false);
 			Game.gold3.setVisible(false);
-			if (Game.blnReady == true && Game.blnReady2 == true && Game.blnRoundStart == false) {
-				System.out.println("game.maingame");
-				Game.mainGame();
-			}
+			
 		} else if (Game.GameState == 2) {
 			if (Game.blnroll1 == true) {
 				Game.roll1.setVisible(true);
@@ -179,6 +176,16 @@ public class GamePanel extends JPanel {
 						g.drawImage(pieceimgs[Game.board[i].intNum], -80 + 120 * i, 390, null);
 					}
 				}
+			}
+			if (Game.blnRoundStart == true && Game.blnPieces == true) {
+				for (int i = 0; i < Game.board2.length; i++) {
+					if (i < 4) {
+						g.drawImage(pieceimgs[Integer.parseInt(Game.board2[i])], 760 - 120 * i, 150, null);
+					} else {
+						g.drawImage(pieceimgs[Integer.parseInt(Game.board2[i])], 1240 - 120 * i, 30, null);
+					}
+				}
+				
 			}
 		} else if (Game.GameState == 2) {
 			g.drawImage(roll, 0, 0, null);

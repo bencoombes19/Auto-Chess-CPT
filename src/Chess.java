@@ -46,12 +46,13 @@ public class Chess {
 
 	// 3 troll increases attack speed of all pieces +20%
 	// 3/6 warrior increases armour +5/+10
-	// 3 orc increases health +300 health
+	// 3 orc increases health +250 health
 	// 3 hunter increases attack damage of all pieces +5% and +10
-	// 3 knight increases armour +5
+	// 3 knight increases armour +7
 	// 2 human increases attack damage +15%
-	// 2 shaman increases attack speed +20%
+	// 2 shaman increases attack speed +25%
 	// 2 elf increases attack speed +20% and attack damage +10%
+	// 1 demon increases attack damage +40%
 	/** constructs the class */
 	public Chess(String strName, int intLevel, int intAtkDmg, int intArmour, int intHealth, int intNum, int intAtkSpd,
 			String strClass, String strRace, boolean blnRanged) {

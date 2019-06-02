@@ -17,10 +17,10 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intTotalExp = 1, intExp = 0,
 			intBoard[], intBench[], intGold = 30, intPieces, intPort = 3000, intHealth = 100, intGold2,
 			intHealth2 = 100, intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour,
-			intRoundNum = 0, intShowScreen = 0;
+			intRoundNum = 0, intShowScreen = 0, intWin = 0;
 	public static String strName = "Player1", strName2 = "Player2", board2[];
 	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true,
-			blnReady = false, blnReady2 = false, blnRoundStart = false, blnShowLabel = false;
+			blnReady = false, blnReady2 = false, blnRoundStart = false, blnShowLabel = false, blnCalculation = false, blnPieces = false;
 	static Chess[] roll = new Chess[5];
 	static Chess[] board = new Chess[1];
 	static Chess[] bench = new Chess[8];
@@ -247,6 +247,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				board = Arrays.copyOf(board, intLevel);
 				gold.setText("GOLD: " + Integer.toString(intGold));
 				level.setText("LEVEL: " + Integer.toString(intLevel));
+				
 			}
 		}
 
@@ -259,6 +260,16 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public void startGame() {
 		GameState = 1;
+		blnRoundStart = false;
+		blnReady = false;
+		blnReady2 = false;
+		blnPieces = false;
+		intDamage = 0;
+		intHealthP = 0;
+		intArmour = 0;
+		intDamage2 = 0;
+		intHealthP2 = 0;
+		intArmour2 = 0;
 		ssm.sendText("start//" + Integer.toString(intGold) + "," + Integer.toString(intHealth) + ","
 				+ Integer.toString(intLevel));
 		board = Arrays.copyOf(board, intLevel);
@@ -269,76 +280,140 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public static void mainGame() {
 		System.out.println("mainGame");
-		if (intLevel == 1) {
+		if (board.length == 1) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum));
-		} else if (intLevel == 2) {
+		} else if (board.length == 2) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum));
-		} else if (intLevel == 3) {
+		} else if (board.length == 3) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum));
-		} else if (intLevel == 4) {
+		} else if (board.length == 4) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum));
-		} else if (intLevel == 5) {
+		} else if (board.length == 5) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum));
-		} else if (intLevel == 6) {
+		} else if (board.length == 6) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum));
-		} else if (intLevel == 7) {
+		} else if (board.length == 7) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum) + ","
 					+ Integer.toString(board[6].intNum));
-		} else if (intLevel == 8) {
+		} else if (board.length == 8) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum) + ","
 					+ Integer.toString(board[6].intNum) + "," + Integer.toString(board[7].intNum));
 		}
+		int intTroll = 0, intWarrior = 0, intOrc = 0, intHunter = 0, intKnight = 0, intHuman = 0, intShaman = 0,
+				intElf = 0, intDemon = 0;
+		Chess round[] = new Chess[0];
+		round = board;
 		intRoundNum = intRoundNum + 1;
-		intDamage = 0;
-		intHealthP = 0;
-		intArmour = 0;
-		intDamage2 = 0;
-		intHealthP2 = 0;
-		intArmour2 = 0;
 		blnRoundStart = true;
-		statusbar.setText("Round in progress calculating winner");
-		for (int i = 0; i < intLevel; i++) {
-			if (board[i] != null) {
-				intDamage = intDamage + board[i].intAtkDmg * board[i].intAtkSpd;
-				intArmour = intArmour + board[i].intArmour;
-				intHealthP = intHealthP + board[i].intHealth;
+		for (int i = 0; i < round.length; i++) {
+			if (round[i] != null) {
+				if (round[i].strRace.equals("troll")) {
+					intTroll = intTroll + 1;
+				} else if (round[i].strClass.equals("warrior")) {
+					intWarrior = intWarrior + 1;
+				} else if (round[i].strRace.equals("orc")) {
+					intOrc = intOrc + 1;
+				} else if (round[i].strClass.equals("hunter")) {
+					intHunter = intHunter + 1;
+				} else if (round[i].strClass.equals("knight")) {
+					intKnight = intKnight + 1;
+				} else if (round[i].strRace.equals("human")) {
+					intHuman = intHuman + 1;
+				} else if (round[i].strClass.equals("shaman")) {
+					intShaman = intShaman + 1;
+				} else if (round[i].strRace.equals("elf")) {
+					intElf = intElf + 1;
+				} else if (round[i].strRace.equals("demon")) {
+					intDemon = intDemon + 1;
+				}
+			}
+		}
+		for (int i = 0; i < round.length; i++) {
+			if (round[i] != null) {
+				if (intTroll >= 3) {
+					round[i].intAtkSpd = (int) (round[i].intAtkSpd * 1.2);
+				}
+				if (round[i].strClass.equals("warrior") && intWarrior >= 3 && intWarrior < 6) {
+					round[i].intArmour = round[i].intArmour + 5;
+				}
+				if (round[i].strClass.equals("warrior") && intWarrior >= 6) {
+					round[i].intArmour = round[i].intArmour + 10;
+				}
+				if (round[i].strRace.equals("orc") && intOrc >= 3) {
+					round[i].intHealth = round[i].intHealth + 250;
+				}
+				if (intHunter >= 3) {
+					round[i].intAtkDmg = (int) (round[i].intAtkDmg * 1.05 + 5);
+				}
+				if (round[i].strClass.equals("knight") && intKnight >= 3) {
+					round[i].intArmour = round[i].intArmour + 7;
+				}
+				if (round[i].strRace.equals("human") && intHuman >= 2) {
+					round[i].intAtkDmg = (int) (round[i].intAtkDmg * 1.15);
+				}
+				if (round[i].strClass.equals("shaman") && intShaman >= 2) {
+					round[i].intAtkSpd = (int) (round[i].intAtkSpd * 1.25);
+				}
+				if (round[i].strRace.equals("elf") && intHuman >= 2) {
+					round[i].intAtkSpd = (int) (round[i].intAtkSpd * 1.2);
+					round[i].intAtkDmg = (int) (round[i].intAtkDmg * 1.1);
+				}
+				if (round[i].strRace.equals("demon") && intDemon == 1) {
+					round[i].intAtkDmg = (int) (round[i].intAtkDmg * 1.4);
+				}
+				intDamage = intDamage + round[i].intAtkDmg * round[i].intAtkSpd;
+				intArmour = intArmour + round[i].intArmour;
+				intHealthP = intHealthP + round[i].intHealth;
 			}
 		}
 		ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + ","
 				+ Integer.toString(intHealthP));
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	}
+	
+	public static void endGame() {
+		System.out.println("endGame");
 		if (blnServer == true) {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
 				intHealth2 = intHealth2 - (((intDamage - intDamage2) / 500) + 1);
 				System.out.println(intHealth2 + "," + intDamage + "," + intDamage2);
 				health2.setText(Integer.toString(intHealth2));
-				ssm.sendText("health2//" + Integer.toString(intHealth2));
 				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
 				blnShowLabel = true;
-				
 				intGold = intGold + 1;
-			} else {
+				
+			} else if(intDamage2 - intHealthP * intArmour > intDamage - intHealthP2 * intArmour2){
 				intHealth = intHealth - (((intDamage2 - intDamage) / 500) + 1);
-				System.out.println(intHealthP);
+				System.out.println(intHealth + "," + intDamage + "," + intDamage2);
 				health.setText(Integer.toString(intHealth));
-				ssm.sendText("health//" + Integer.toString(intHealth));
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
 				blnShowLabel = true;
-				
+
+			}
+		}else {
+			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
+				intHealth2 = intHealth2 - (((intDamage - intDamage2) / 500) + 1);
+				System.out.println(intHealth2 + "," + intDamage + "," + intDamage2);
+				health2.setText(Integer.toString(intHealth2));
+				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
+				blnShowLabel = true;
+				intGold = intGold + 1;
+			} else if(intDamage2 - intHealthP * intArmour > intDamage - intHealthP2 * intArmour2){
+				intHealth = intHealth - (((intDamage2 - intDamage) / 500) + 1);
+				System.out.println(intHealth + "," + intDamage + "," + intDamage2);
+				health.setText(Integer.toString(intHealth));
+				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
+				blnShowLabel = true;
+
 			}
 		}
 		intExp = intExp + 1;
@@ -376,8 +451,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		} else if (intGold >= 50) {
 			intGold = intGold + 5;
 		}
-		
-		System.out.println(intShowScreen);
+
 		
 	}
 
@@ -388,6 +462,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		blnroll3 = true;
 		blnroll4 = true;
 		blnroll5 = true;
+		
 		for (int i = 0; i < 5; i++) {
 			if (intLevel == 1 || intLevel == 2) {
 				System.out.println("roll");
@@ -402,6 +477,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			roll[i] = null;
 			roll[i] = pieces[intRand];
 		}
+		gold3.setText("GOLD: " + Integer.toString(intGold));
 		roll1.setText(roll[0].strName.toUpperCase());
 		roll2.setText(roll[1].strName.toUpperCase());
 		roll3.setText(roll[2].strName.toUpperCase());
@@ -449,15 +525,24 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == fps) {
 			panel.repaint();
-			if(blnShowLabel == true) {
+			if (blnShowLabel == true) {
+				intShowScreen++;
 				System.out.println(intShowScreen);
-			intShowScreen++;
 			}
 			if (intShowScreen > 100) {
 				intShowScreen = 0;
 				blnShowLabel = false;
 				roll();
-
+			}
+			if(blnCalculation == true) {
+				blnCalculation = false;
+				endGame();
+			}
+			if (blnReady == true && blnReady2 == true && blnRoundStart == false) {
+				System.out.println("game.maingame");
+				blnReady = false;
+				blnReady2 = false;
+				Game.mainGame();
 			}
 		}
 		if (e.getSource() == ssm) {
@@ -485,19 +570,24 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				intDamage2 = Integer.parseInt(strSplit[0]);
 				intArmour2 = Integer.parseInt(strSplit[1]);
 				intHealthP2 = Integer.parseInt(strSplit[2]);
+				blnCalculation = true;
 			} else if (strText.substring(0, 8).equals("health//")) {
-				intHealth = Integer.parseInt(strText.substring(8, strText.length()));
-				health.setText(Integer.toString(intHealth));
+				strText = strText.substring(8, strText.length());
+				intHealth2 = Integer.parseInt(strText);
+				health2.setText(Integer.toString(intHealth2));
 				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
 				blnShowLabel = true;
 				intGold = intGold + 1;
 			} else if (strText.substring(0, 9).equals("health2//")) {
-				intHealth2 = Integer.parseInt(strText.substring(9, strText.length()));
-				health2.setText(Integer.toString(intHealth2));
+				strText = strText.substring(9, strText.length());
+				intHealth = Integer.parseInt(strText);
+				health.setText(Integer.toString(intHealth));
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
 				blnShowLabel = true;
 			} else if (strText.substring(0, 8).equals("pieces//")) {
 				strText = strText.substring(8, strText.length());
+				board2 = strText.split(",");
+				blnPieces = true;
 			}
 
 		}
@@ -553,8 +643,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			if (e.getX() >= 1022 && e.getX() <= 1257 && e.getY() >= 443 && e.getY() <= 510) {
 				System.out.println("ready");
 				statusbar.setText(strName + " has readied up");
-				ssm.sendText("ready//");
 				blnReady = true;
+				ssm.sendText("ready//");
+				
 			}
 		} else if (GameState == 2) {
 			if (e.getX() >= 53 && e.getX() <= 267 && e.getY() >= 431 && e.getY() <= 523 && blnroll1 == true) {
