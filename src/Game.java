@@ -20,7 +20,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			intRoundNum = 0, intShowScreen = 0, intWin = 0;
 	public static String strName = "Player1", strName2 = "Player2", board2[];
 	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true,
-			blnReady = false, blnReady2 = false, blnRoundStart = false, blnShowLabel = false, blnCalculation = false, blnPieces = false;
+			blnReady = false, blnReady2 = false, blnRoundStart = false, blnShowLabel = false, blnCalculation = false,
+			blnPieces = false, blnMain = false;
 	static Chess[] roll = new Chess[5];
 	static Chess[] board = new Chess[1];
 	static Chess[] bench = new Chess[8];
@@ -247,7 +248,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				board = Arrays.copyOf(board, intLevel);
 				gold.setText("GOLD: " + Integer.toString(intGold));
 				level.setText("LEVEL: " + Integer.toString(intLevel));
-				
+
 			}
 		}
 
@@ -282,7 +283,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		System.out.println("mainGame");
 		if (board.length == 1) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum));
-		} else if (board.length == 2) {
+		} else if (board.length == 2 ) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum));
 		} else if (board.length == 3) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
@@ -313,8 +314,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				intElf = 0, intDemon = 0;
 		Chess round[] = new Chess[0];
 		round = board;
-		intRoundNum = intRoundNum + 1;
 		blnRoundStart = true;
+		blnReady = false;
+		blnReady2 = false;
 		for (int i = 0; i < round.length; i++) {
 			if (round[i] != null) {
 				if (round[i].strRace.equals("troll")) {
@@ -378,38 +380,40 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		}
 		ssm.sendText("calculation//" + Integer.toString(intDamage) + "," + Integer.toString(intArmour) + ","
 				+ Integer.toString(intHealthP));
+		blnMain = true;
 	}
-	
+
 	public static void endGame() {
+		intRoundNum = intRoundNum + 1;
 		System.out.println("endGame");
 		if (blnServer == true) {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
-				intHealth2 = intHealth2 - (((intDamage - intDamage2) / 500) + 1);
+				intHealth2 = intHealthP2 - ((((intDamage - intHealthP2 * intArmour2) - (intDamage2 - intHealthP * intArmour)) / 500) + 1);
 				System.out.println(intHealth2 + "," + intDamage + "," + intDamage2);
 				health2.setText(Integer.toString(intHealth2));
 				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
 				blnShowLabel = true;
 				intGold = intGold + 1;
-				
-			} else if(intDamage2 - intHealthP * intArmour > intDamage - intHealthP2 * intArmour2){
-				intHealth = intHealth - (((intDamage2 - intDamage) / 500) + 1);
-				System.out.println(intHealth + "," + intDamage + "," + intDamage2);
+
+			} else if (intDamage2 - intHealthP * intArmour > intDamage - intHealthP2 * intArmour2) {
+				intHealth = intHealth - ((((intDamage2 - intHealthP * intArmour) - (intDamage - intHealthP2 * intArmour2)) / 500) + 1);
+				System.out.println(intHealth + "," + intDamage2 + "," + intDamage);
 				health.setText(Integer.toString(intHealth));
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
 				blnShowLabel = true;
 
 			}
-		}else {
+		} else {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
-				intHealth2 = intHealth2 - (((intDamage - intDamage2) / 500) + 1);
+				intHealth2 = intHealthP2 - ((((intDamage - intHealthP2 * intArmour2) - (intDamage2 - intHealthP * intArmour)) / 500) + 1);
 				System.out.println(intHealth2 + "," + intDamage + "," + intDamage2);
 				health2.setText(Integer.toString(intHealth2));
 				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
 				blnShowLabel = true;
 				intGold = intGold + 1;
-			} else if(intDamage2 - intHealthP * intArmour > intDamage - intHealthP2 * intArmour2){
-				intHealth = intHealth - (((intDamage2 - intDamage) / 500) + 1);
-				System.out.println(intHealth + "," + intDamage + "," + intDamage2);
+			} else if (intDamage2 - intHealthP * intArmour > intDamage - intHealthP2 * intArmour2) {
+				intHealth = intHealth - ((((intDamage2 - intHealthP * intArmour) - (intDamage - intHealthP2 * intArmour2)) / 500) + 1);
+				System.out.println(intHealth + "," + intDamage2 + "," + intDamage);
 				health.setText(Integer.toString(intHealth));
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
 				blnShowLabel = true;
@@ -451,8 +455,6 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		} else if (intGold >= 50) {
 			intGold = intGold + 5;
 		}
-
-		
 	}
 
 	public static void roll() {
@@ -462,7 +464,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		blnroll3 = true;
 		blnroll4 = true;
 		blnroll5 = true;
-		
+
 		for (int i = 0; i < 5; i++) {
 			if (intLevel == 1 || intLevel == 2) {
 				System.out.println("roll");
@@ -527,26 +529,25 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			panel.repaint();
 			if (blnShowLabel == true) {
 				intShowScreen++;
-				System.out.println(intShowScreen);
 			}
 			if (intShowScreen > 100) {
-				intShowScreen = 0;
 				blnShowLabel = false;
+				intShowScreen = 0;
 				roll();
 			}
-			if(blnCalculation == true) {
+			if (blnCalculation == true && blnMain == true) {
+				blnMain = false;
 				blnCalculation = false;
 				endGame();
 			}
 			if (blnReady == true && blnReady2 == true && blnRoundStart == false) {
 				System.out.println("game.maingame");
-				blnReady = false;
-				blnReady2 = false;
-				Game.mainGame();
+				mainGame();
 			}
 		}
 		if (e.getSource() == ssm) {
 			String strText = ssm.readText();
+			System.out.println("strText: " + strText);
 			if (strText.substring(0, 7).equals("start//")) {
 				strText = strText.substring(7, strText.length());
 				String strSplit[] = strText.split(",");
@@ -645,7 +646,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				statusbar.setText(strName + " has readied up");
 				blnReady = true;
 				ssm.sendText("ready//");
-				
+
 			}
 		} else if (GameState == 2) {
 			if (e.getX() >= 53 && e.getX() <= 267 && e.getY() >= 431 && e.getY() <= 523 && blnroll1 == true) {
