@@ -21,6 +21,7 @@ public class GamePanel extends JPanel {
 	BufferedImage roll = null;
 	BufferedImage connection = null;
 	BufferedImage client = null;
+	BufferedImage username = null;
 	BufferedImage pieceimgs[] = new BufferedImage[15];
 
 	public void paintComponent(Graphics g) throws NullPointerException {
@@ -53,6 +54,7 @@ public class GamePanel extends JPanel {
 			roll = ImageIO.read(new File("roll.png"));
 			connection = ImageIO.read(new File("connection.png"));
 			client = ImageIO.read(new File("client.png"));
+			username = ImageIO.read(new File("username.png"));
 			for (int i = 0; i < 15; i++) {
 				pieceimgs[i] = ImageIO.read(new File(Game.pieces[i].strName + ".png"));
 			}
@@ -212,6 +214,8 @@ public class GamePanel extends JPanel {
 			g.drawImage(connection, 0, 0, null);
 		} else if (Game.GameState == 6) {
 			g.drawImage(client, 0, 0, null);
+		} else if (Game.GameState == 7) {
+			g.drawImage(username, 0, 0, null);
 		}
 	}
 

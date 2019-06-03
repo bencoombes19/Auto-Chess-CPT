@@ -8,7 +8,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	JFrame frame;
 	GamePanel panel;
 	Timer fps;
-	JTextField portoption, ipaddress;
+	JTextField portoption, ipaddress, username;
 	static JLabel gold, health, name, level, gold2, health2, name2, level2, roll1, roll2, roll3, roll4, roll5, gold3,
 			statusbar;
 	static SuperSocketMaster ssm;
@@ -157,6 +157,13 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		statusbar.setBounds(282, 519, 716, 26);
 		statusbar.setForeground(new Color(150, 2, 2));
 		statusbar.setHorizontalAlignment(JLabel.CENTER);
+		
+		username = new JTextField();
+		username.setBounds(455, 360, 363, 40);
+		username.setToolTipText("please enter a username between 2 and 9 characters");
+		username.setFont(font);
+		username.setVisible(false);
+		username.setEnabled(false);
 
 		panel.add(statusbar);
 		panel.add(gold3);
@@ -271,6 +278,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		intDamage2 = 0;
 		intHealthP2 = 0;
 		intArmour2 = 0;
+		panel.requestFocusInWindow();
 		ssm.sendText("start//" + Integer.toString(intGold) + "," + Integer.toString(intHealth) + ","
 				+ Integer.toString(intLevel));
 		board = Arrays.copyOf(board, intLevel);
@@ -497,6 +505,12 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public void help() {
 		GameState = 4;
+	}
+	
+	public void username() {
+		GameState = 7;
+		username.setVisible(true);
+		username.setEnabled(true);
 	}
 
 	public static void main(String[] args) {
@@ -737,7 +751,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				ssm.connect();
 				System.out.println(ssm.getMyAddress());
 				blnServer = true;
-				roll();
+				username();
 			}
 			if (e.getX() >= 782 && e.getX() <= 1069 && e.getY() >= 287 && e.getY() <= 433) {
 				blnServer = false;
@@ -749,7 +763,17 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				ssm.connect();
 				ipaddress.setVisible(false);
 				ipaddress.setEnabled(false);
-				roll();
+				username();
+			}
+		} else if (GameState == 7) {
+			if (e.getX() >= 546 && e.getX() <= 727 && e.getY() >= 476 && e.getY() <= 554) {
+				if(username.getText().length() > 9 || username.getText().length() < 3) {
+					username.setText("");
+				} else {
+					strName = username.getText();
+					ssm.sendText("username//" + strName);
+					roll();
+				}
 			}
 		}
 	}
