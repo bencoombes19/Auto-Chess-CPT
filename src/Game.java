@@ -405,7 +405,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				intGold = intGold + 1;
 
 			} else if (intDamage2 - intHealthP * intArmour > intDamage - intHealthP2 * intArmour2) {
-				intHealth = intHealth - ((((intDamage2 - intHealthP * intArmour) - (intDamage - intHealthP2 * intArmour2)) / 500) + 1);
+				intHealth = intHealth - ((((intDamage2 - intHealthP * intArmour) - (intDamage - intHealthP2 * intArmour2)) / 3000) + 1);
 				System.out.println(intHealth + "," + intDamage2 + "," + intDamage);
 				health.setText(Integer.toString(intHealth));
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
