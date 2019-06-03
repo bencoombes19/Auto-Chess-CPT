@@ -397,7 +397,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		System.out.println("endGame");
 		if (blnServer == true) {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
-				intHealth2 = intHealthP2 - ((((intDamage - intHealthP2 * intArmour2) - (intDamage2 - intHealthP * intArmour)) / 500) + 1);
+				intHealth2 = intHealth2 - ((((intDamage - intHealthP2 * intArmour2) - (intDamage2 - intHealthP * intArmour)) / 500) + 1);
 				System.out.println(intHealth2 + "," + intDamage + "," + intDamage2);
 				health2.setText(Integer.toString(intHealth2));
 				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
@@ -414,7 +414,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			}
 		} else {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
-				intHealth2 = intHealthP2 - ((((intDamage - intHealthP2 * intArmour2) - (intDamage2 - intHealthP * intArmour)) / 500) + 1);
+				intHealth2 = intHealth2 - ((((intDamage - intHealthP2 * intArmour2) - (intDamage2 - intHealthP * intArmour)) / 500) + 1);
 				System.out.println(intHealth2 + "," + intDamage + "," + intDamage2);
 				health2.setText(Integer.toString(intHealth2));
 				statusbar.setText(strName + " won with " + intDamage + " damage to " + intDamage2 + " damage");
