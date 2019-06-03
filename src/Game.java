@@ -165,6 +165,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		username.setVisible(false);
 		username.setEnabled(false);
 
+		panel.add(username);
 		panel.add(statusbar);
 		panel.add(gold3);
 		panel.add(roll1);
