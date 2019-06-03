@@ -604,6 +604,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				strText = strText.substring(8, strText.length());
 				board2 = strText.split(",");
 				blnPieces = true;
+			} else if (strText.substring(0,10).equals("username//")) {
+				strText = strText.substring(10, strText.length());
+				strName2 = strText;
 			}
 
 		}
@@ -773,6 +776,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				} else {
 					strName = username.getText();
 					ssm.sendText("username//" + strName);
+					username.setEnabled(true);
+					username.setVisible(false);
 					roll();
 				}
 			}
