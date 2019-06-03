@@ -15,7 +15,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	static BufferedReader reader;
 	static Chess[] pieces = new Chess[15];
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intTotalExp = 1, intExp = 0,
-			intBoard[], intBench[], intGold = 30, intPieces, intPort = 3000, intHealth = 100, intGold2,
+			intBoard[], intBench[], intGold = 1, intPieces, intPort = 3000, intHealth = 100, intGold2,
 			intHealth2 = 100, intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour,
 			intRoundNum = 0, intShowScreen = 0, intWin = 0;
 	public static String strName = "Player1", strName2 = "Player2", board2[];
@@ -515,7 +515,6 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	}
 
 	public static void main(String[] args) {
-
 		try {
 			reader = new BufferedReader(new FileReader("pieces.csv"));
 			for (int i = 0; i < 15; i++) {
@@ -607,6 +606,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			} else if (strText.substring(0,10).equals("username//")) {
 				strText = strText.substring(10, strText.length());
 				strName2 = strText;
+				name2.setText(strName2);
 			}
 
 		}
@@ -775,6 +775,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 					username.setText("");
 				} else {
 					strName = username.getText();
+					name.setText(strName);
 					ssm.sendText("username//" + strName);
 					username.setEnabled(true);
 					username.setVisible(false);
