@@ -50,12 +50,19 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		portoption.setFont(font);
 		portoption.setVisible(false);
 		portoption.setEnabled(false);
+		portoption.setOpaque(false);
+		portoption.setBorder(BorderFactory.createLineBorder(Color.black , 3));
+		portoption.setForeground(Color.black);
+		
 
 		ipaddress = new JTextField();
 		ipaddress.setBounds(455, 360, 363, 40);
 		ipaddress.setToolTipText("Enter IP address of the server");
 		ipaddress.setFont(font);
 		ipaddress.setVisible(false);
+		ipaddress.setOpaque(false);
+		ipaddress.setBorder(BorderFactory.createLineBorder(Color.black , 3));
+		ipaddress.setForeground(Color.black);
 
 		panel = new GamePanel();
 		panel.setLayout(null);
@@ -71,13 +78,21 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		fps.start();
 		
 		chat = new JTextArea();
+		chat.setOpaque(false);
+		chat.setBorder(BorderFactory.createLineBorder(new Color(59,57,57)));
 		chattext = new JTextField();
 		chattext.setBounds(1031, 363, 218, 65);
 		chattext.addActionListener(this);
 		chattext.setVisible(false);
+		chattext.setOpaque(false);
+		chattext.setBorder(BorderFactory.createLineBorder(new Color(150,2,2), 3));
+		chattext.setForeground(Color.white);
 		scroll = new JScrollPane(chat);
 		scroll.setBounds(1031,30,218,326);
 		scroll.setVisible(false);
+		scroll.getViewport().setOpaque(false);
+		scroll.setOpaque(false);
+		scroll.setBorder(BorderFactory.createLineBorder(new Color(59,57,57)));
 		chat.setEnabled(false);
 
 		health = new JLabel(Integer.toString(intHealth));
@@ -175,8 +190,11 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		username.setBounds(455, 360, 363, 40);
 		username.setToolTipText("please enter a username between 2 and 9 characters");
 		username.setFont(font);
+		username.setForeground(Color.black);
 		username.setVisible(false);
 		username.setEnabled(false);
+		username.setOpaque(false);
+		username.setBorder(BorderFactory.createLineBorder(Color.black , 3));
 		
 		panel.add(chattext);
 		panel.add(scroll);
@@ -436,8 +454,11 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				health.setText(Integer.toString(intHealth));
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
 				blnShowLabel = true;
-
+			} else {
+				statusbar.setText("Both players dealt the same damage, Tie Round");
+				blnShowLabel = true;
 			}
+			
 		} else {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
 				intHealth2 = intHealth2
