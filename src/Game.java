@@ -73,6 +73,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		chat = new JTextArea();
 		chattext = new JTextField();
 		chattext.setBounds(1031, 363, 218, 65);
+		chattext.addActionListener(this);
 		chattext.setVisible(false);
 		scroll = new JScrollPane(chat);
 		scroll.setBounds(1031,30,218,326);
@@ -588,6 +589,12 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				mainGame();
 			}
 		}
+		if(e.getSource() == chattext && chattext.getText().length() > 0) {
+			System.out.println("test");
+			ssm.sendText(strName + ": " + chattext.getText());
+			chat.append(strName + ": " + chattext.getText() + "\n");
+			chattext.setText("");
+		}
 		if (e.getSource() == ssm) {
 			String strText = ssm.readText();
 			System.out.println("strText: " + strText);
@@ -637,7 +644,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				strName2 = strText;
 				name2.setText(strName2);
 			} else {
-				chat.append(strText + "/n");
+				chat.append(strText + "\n");
 			}
 
 		}
