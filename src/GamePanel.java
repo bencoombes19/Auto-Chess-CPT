@@ -22,6 +22,10 @@ public class GamePanel extends JPanel {
 	BufferedImage connection = null;
 	BufferedImage client = null;
 	BufferedImage username = null;
+	BufferedImage helpmenu = null;
+	BufferedImage controlshelp = null;
+	BufferedImage connectionhelp = null;
+	BufferedImage mechanicshelp = null;
 	BufferedImage pieceimgs[] = new BufferedImage[15];
 
 	public void paintComponent(Graphics g) throws NullPointerException {
@@ -36,7 +40,6 @@ public class GamePanel extends JPanel {
 			e1.printStackTrace();
 		}
 		Font font2 = new Font("My Font Regular", Font.TRUETYPE_FONT, 36);
-		Graphics2D g2 = (Graphics2D) g;
 		try {
 			// Importing the images
 			start1 = ImageIO.read(new File("start1.png"));
@@ -55,6 +58,7 @@ public class GamePanel extends JPanel {
 			connection = ImageIO.read(new File("connection.png"));
 			client = ImageIO.read(new File("client.png"));
 			username = ImageIO.read(new File("username.png"));
+			helpmenu = ImageIO.read(new File("helpmenu.png"));
 			for (int i = 0; i < 15; i++) {
 				pieceimgs[i] = ImageIO.read(new File(Game.pieces[i].strName + ".png"));
 			}
@@ -71,6 +75,8 @@ public class GamePanel extends JPanel {
 			Game.gold2.setVisible(true);
 			Game.level2.setVisible(true);
 			Game.statusbar.setVisible(true);
+			Game.scroll.setVisible(true);
+			Game.chattext.setVisible(true);
 			Game.roll1.setVisible(false);
 			Game.roll2.setVisible(false);
 			Game.roll3.setVisible(false);
@@ -115,6 +121,8 @@ public class GamePanel extends JPanel {
 			Game.gold2.setVisible(false);
 			Game.level2.setVisible(false);
 			Game.statusbar.setVisible(false);
+			Game.scroll.setVisible(false);
+			Game.chattext.setVisible(false);
 		} else {
 			Game.health.setVisible(false);
 			Game.name.setVisible(false);
@@ -131,6 +139,8 @@ public class GamePanel extends JPanel {
 			Game.roll4.setVisible(false);
 			Game.roll5.setVisible(false);
 			Game.gold3.setVisible(false);
+			Game.scroll.setVisible(false);
+			Game.chattext.setVisible(false);
 		}
 		// Start Screen
 		if (Game.GameState == 0) {
@@ -209,7 +219,7 @@ public class GamePanel extends JPanel {
 		} else if (Game.GameState == 3) {
 			g.drawImage(options, 0, 0, null);
 		} else if (Game.GameState == 4) {
-			g.drawImage(help, 0, 0, null);
+			g.drawImage(helpmenu, 0, 0, null);
 		} else if (Game.GameState == 5) {
 			g.drawImage(connection, 0, 0, null);
 		} else if (Game.GameState == 6) {
