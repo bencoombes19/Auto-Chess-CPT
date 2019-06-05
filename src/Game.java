@@ -330,30 +330,36 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public static void mainGame() {
 		System.out.println("mainGame");
-		if (board.length == 1) {
+		int intPieceNum = 0;
+		for(int i = 0; i < board.length; i++) {
+			if(board[i] != null) {
+				intPieceNum = intPieceNum + 1;
+			}
+		}
+		if (intPieceNum == 1) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum));
-		} else if (board.length == 2) {
+		} else if (intPieceNum == 2) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum));
-		} else if (board.length == 3) {
+		} else if (intPieceNum == 3) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum));
-		} else if (board.length == 4) {
+		} else if (intPieceNum == 4) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum));
-		} else if (board.length == 5) {
+		} else if (intPieceNum == 5) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum));
-		} else if (board.length == 6) {
+		} else if (intPieceNum == 6) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum));
-		} else if (board.length == 7) {
+		} else if (intPieceNum == 7) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum) + ","
 					+ Integer.toString(board[6].intNum));
-		} else if (board.length == 8) {
+		} else if (intPieceNum == 8) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum) + ","
