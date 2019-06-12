@@ -26,7 +26,7 @@ public class GamePanel extends JPanel {
 	BufferedImage controlshelp = null;
 	BufferedImage connectionhelp = null;
 	BufferedImage mechanicshelp = null;
-	BufferedImage pieceimgs[] = new BufferedImage[15];
+	BufferedImage pieceimgs[] = new BufferedImage[30];
 
 	public void paintComponent(Graphics g) throws NullPointerException {
 		try {
@@ -59,8 +59,12 @@ public class GamePanel extends JPanel {
 			client = ImageIO.read(new File("client.png"));
 			username = ImageIO.read(new File("username.png"));
 			helpmenu = ImageIO.read(new File("helpmenu.png"));
-			for (int i = 0; i < 15; i++) {
-				pieceimgs[i] = ImageIO.read(new File(Game.pieces[i].strName + ".png"));
+			for (int i = 0; i < 30; i++) {
+				if (i < 15) {
+					pieceimgs[i] = ImageIO.read(new File(Game.pieces[i].strName + ".png"));
+				} else {
+					pieceimgs[i] = ImageIO.read(new File(Game.pieces2[i - 15].strName + "2.png"));
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -83,7 +87,7 @@ public class GamePanel extends JPanel {
 			Game.roll4.setVisible(false);
 			Game.roll5.setVisible(false);
 			Game.gold3.setVisible(false);
-			
+
 		} else if (Game.GameState == 2) {
 			if (Game.blnroll1 == true) {
 				Game.roll1.setVisible(true);
@@ -197,7 +201,7 @@ public class GamePanel extends JPanel {
 						g.drawImage(pieceimgs[Integer.parseInt(Game.board2[i])], 1240 - 120 * i, 30, null);
 					}
 				}
-				
+
 			}
 		} else if (Game.GameState == 2) {
 			g.drawImage(roll, 0, 0, null);

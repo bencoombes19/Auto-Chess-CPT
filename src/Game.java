@@ -16,18 +16,17 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			statusbar;
 	static SuperSocketMaster ssm;
 	static BufferedReader reader;
-	static Chess[] pieces = new Chess[15];
+	static Chess[] pieces = new Chess[15], pieces2 = new Chess[15], bench = new Chess[8], board = new Chess[1],
+			roll = new Chess[5];
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intTotalExp = 1, intExp = 0,
-			intBoard[], intBench[], intGold = 1, intPieces, intPort = 3000, intHealth = 100, intGold2, intHealth2 = 100,
-			intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour, intRoundNum = 0,
-			intShowScreen = 0, intWin = 0, intHelp = 0;
+			intBoard[], intBench[], intGold = 20, intPieces, intPort = 3000, intHealth = 100, intGold2,
+			intHealth2 = 100, intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour,
+			intRoundNum = 0, intShowScreen = 0, intWin = 0, intHelp = 0;
+	int[] intPieceNum = new int[15];;
 	public static String strName = "Player1", strName2 = "Player2", board2[];
 	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true,
 			blnReady = false, blnReady2 = false, blnRoundStart = false, blnShowLabel = false, blnCalculation = false,
 			blnPieces = false, blnMain = false;
-	static Chess[] roll = new Chess[5];
-	static Chess[] board = new Chess[1];
-	static Chess[] bench = new Chess[8];
 
 	public Game() {
 		try {
@@ -51,9 +50,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		portoption.setVisible(false);
 		portoption.setEnabled(false);
 		portoption.setOpaque(false);
-		portoption.setBorder(BorderFactory.createLineBorder(Color.black , 3));
+		portoption.setBorder(BorderFactory.createLineBorder(Color.black, 3));
 		portoption.setForeground(Color.black);
-		
 
 		ipaddress = new JTextField();
 		ipaddress.setBounds(455, 360, 363, 40);
@@ -61,7 +59,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		ipaddress.setFont(font);
 		ipaddress.setVisible(false);
 		ipaddress.setOpaque(false);
-		ipaddress.setBorder(BorderFactory.createLineBorder(Color.black , 3));
+		ipaddress.setBorder(BorderFactory.createLineBorder(Color.black, 3));
 		ipaddress.setForeground(Color.black);
 
 		panel = new GamePanel();
@@ -76,23 +74,23 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 		fps = new Timer(1000 / 60, this);
 		fps.start();
-		
+
 		chat = new JTextArea();
 		chat.setOpaque(false);
-		chat.setBorder(BorderFactory.createLineBorder(new Color(59,57,57)));
+		chat.setBorder(BorderFactory.createLineBorder(new Color(59, 57, 57)));
 		chattext = new JTextField();
 		chattext.setBounds(1031, 363, 218, 65);
 		chattext.addActionListener(this);
 		chattext.setVisible(false);
 		chattext.setOpaque(false);
-		chattext.setBorder(BorderFactory.createLineBorder(new Color(150,2,2), 3));
+		chattext.setBorder(BorderFactory.createLineBorder(new Color(150, 2, 2), 3));
 		chattext.setForeground(Color.white);
 		scroll = new JScrollPane(chat);
-		scroll.setBounds(1031,30,218,326);
+		scroll.setBounds(1031, 30, 218, 326);
 		scroll.setVisible(false);
 		scroll.getViewport().setOpaque(false);
 		scroll.setOpaque(false);
-		scroll.setBorder(BorderFactory.createLineBorder(new Color(59,57,57)));
+		scroll.setBorder(BorderFactory.createLineBorder(new Color(59, 57, 57)));
 		chat.setEnabled(false);
 
 		health = new JLabel(Integer.toString(intHealth));
@@ -194,8 +192,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		username.setVisible(false);
 		username.setEnabled(false);
 		username.setOpaque(false);
-		username.setBorder(BorderFactory.createLineBorder(Color.black , 3));
-		
+		username.setBorder(BorderFactory.createLineBorder(Color.black, 3));
+
 		panel.add(chattext);
 		panel.add(scroll);
 		panel.add(username);
@@ -293,7 +291,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				level.setText("LEVEL: " + Integer.toString(intLevel));
 
 			}
-			if(e.getKeyCode() == KeyEvent.VK_ENTER && chattext.getText().length() > 0) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER && chattext.getText().length() > 0) {
 				ssm.sendText(strName + ": " + chattext.getText());
 				chat.append(strName + ": " + chattext.getText());
 				chattext.setText("");
@@ -331,8 +329,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	public static void mainGame() {
 		System.out.println("mainGame");
 		int intPieceNum = 0;
-		for(int i = 0; i < board.length; i++) {
-			if(board[i] != null) {
+		for (int i = 0; i < board.length; i++) {
+			if (board[i] != null) {
 				intPieceNum = intPieceNum + 1;
 			}
 		}
@@ -442,7 +440,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		intRoundNum = intRoundNum + 1;
 		System.out.println("endGame");
 		if (blnServer == true) {
-			if (intDamage - intHealthP2 * intArmour2  > intDamage2 - intHealthP * intArmour) {
+			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
 				intHealth2 = intHealth2 - ((intDamage / 3000) + 1);
 				System.out.println(intHealth2 + "," + intDamage + "," + intDamage2);
 				health2.setText(Integer.toString(intHealth2));
@@ -460,7 +458,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				statusbar.setText("Both players dealt the same damage, Tie Round");
 				blnShowLabel = true;
 			}
-			
+
 		} else {
 			if (intDamage - intHealthP2 * intArmour2 > intDamage2 - intHealthP * intArmour) {
 				intHealth2 = intHealth2 - ((intDamage / 3000) + 1);
@@ -573,6 +571,14 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 						Integer.parseInt(strLine[3]), Integer.parseInt(strLine[4]), Integer.parseInt(strLine[5]),
 						Integer.parseInt(strLine[6]), strLine[7], strLine[8], Boolean.parseBoolean(strLine[9]));
 			}
+			reader = new BufferedReader(new FileReader("pieces2.csv"));
+			for (int i = 0; i < 15; i++) {
+				String strCSV = reader.readLine();
+				String strLine[] = strCSV.split(",");
+				pieces2[i] = new Chess(strLine[0], Integer.parseInt(strLine[1]), Integer.parseInt(strLine[2]),
+						Integer.parseInt(strLine[3]), Integer.parseInt(strLine[4]), Integer.parseInt(strLine[5]),
+						Integer.parseInt(strLine[6]), strLine[7], strLine[8], Boolean.parseBoolean(strLine[9]));
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -607,8 +613,38 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				System.out.println("game.maingame");
 				mainGame();
 			}
+			if (GameState == 1) {
+				for (int i = 0; i < 8; i++) {
+					if (bench[i] != null) {
+						if(bench[i].intNum < 15) {
+						intPieceNum[bench[i].intNum] = intPieceNum[bench[i].intNum] + 1;
+						}
+					}
+				}
+				for (int i = 0; i < 15; i++) {
+					if (intPieceNum[i] > 3) {
+						intPieceNum[i] = 0;
+						for (int i2 = 0; i2 < 8; i2++) {
+							if (bench[i2] != null) {
+								if (bench[i2].intNum == i) {
+									bench[i2] = null;
+									System.out.println("1");
+								}
+							}
+						}
+						for (int i2 = 0; i2 < 8; i2++) {
+							if (bench[i2] == null) {
+								bench[i2] = pieces2[i];
+								System.out.println("2");
+								i2 = 8;
+							}
+						}
+					}
+				}
+			}
 		}
-		if(e.getSource() == chattext && chattext.getText().length() > 0) {
+
+		if (e.getSource() == chattext && chattext.getText().length() > 0) {
 			System.out.println("test");
 			ssm.sendText(strName + ": " + chattext.getText());
 			chat.append(strName + ": " + chattext.getText() + "\n");
@@ -713,6 +749,35 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 								+ Integer.toString(intLevel));
 						bench[i] = null;
 
+					}
+				}
+			}
+			for (int i = 0; i < intLevel; i++) {
+				if (i < 4) {
+					if (e.getX() >= 400 + 120 * i && e.getX() <= 520 + 120 * i && e.getY() >= 270 && e.getY() <= 390
+							&& e.getButton() == 1) {
+						if (board[i] != null) {
+							for (int i2 = 0; i2 < 8; i2++) {
+								if (bench[i2] == null) {
+									bench[i2] = board[i];
+									board[i] = null;
+									i2 = 8;
+								}
+							}
+						}
+					}
+				} else {
+					if (e.getX() >= -80 + 120 * i && e.getX() <= 400 + 120 * i && e.getY() >= 270 && e.getY() <= 390
+							&& e.getButton() == 1) {
+						if (board[i] != null) {
+							for (int i2 = 0; i2 < 8; i2++) {
+								if (bench[i2] == null) {
+									bench[i2] = board[i];
+									board[i] = null;
+									i2 = 8;
+								}
+							}
+						}
 					}
 				}
 			}
