@@ -22,7 +22,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			intBoard[], intBench[], intGold = 1, intPieces, intPort = 3000, intHealth = 100, intGold2,
 			intHealth2 = 100, intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour,
 			intRoundNum = 0, intShowScreen = 0, intWin = 0, intHelp = 0;
-	int[] intPieceNum = new int[15];;
+	int[] intPieceNum = new int[15];
 	public static String strName = "Player1", strName2 = "Player2", board2[];
 	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true,
 			blnReady = false, blnReady2 = false, blnRoundStart = false, blnShowLabel = false, blnCalculation = false,
@@ -614,6 +614,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				mainGame();
 			}
 			if (GameState == 1) {
+				for(int i = 0; i < 15; i++) {
+					intPieceNum[i] = 0;
+				}
 				for (int i = 0; i < 8; i++) {
 					if (bench[i] != null) {
 						if(bench[i].intNum < 15) {
@@ -622,7 +625,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 					}
 				}
 				for (int i = 0; i < 15; i++) {
-					if (intPieceNum[i] > 3) {
+					if (intPieceNum[i] >= 3) {
 						intPieceNum[i] = 0;
 						for (int i2 = 0; i2 < 8; i2++) {
 							if (bench[i2] != null) {
@@ -729,7 +732,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		if (GameState == 1) {
 			for (int i = 0; i < 8; i++) {
 				if (e.getX() >= 160 + 120 * i && e.getX() <= 280 + 120 * i && e.getY() >= 554 && e.getY() <= 674
-						&& e.getButton() == 1) {
+						&& e.getButton() == 1 && blnReady == false) {
 					if (bench[i] != null) {
 						for (int i2 = 0; i2 < intLevel; i2++) {
 							if (board[i2] == null) {
@@ -741,7 +744,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 					}
 				}
 				if (e.getX() >= 160 + 120 * i && e.getX() <= 280 + 120 * i && e.getY() >= 554 && e.getY() <= 674
-						&& e.getButton() == 3) {
+						&& e.getButton() == 3 && blnReady == false) {
 					if (bench[i] != null) {
 						intGold = intGold + bench[i].intLevel;
 						gold.setText("GOLD: " + Integer.toString(intGold));
@@ -755,7 +758,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			for (int i = 0; i < intLevel; i++) {
 				if (i < 4) {
 					if (e.getX() >= 400 + 120 * i && e.getX() <= 520 + 120 * i && e.getY() >= 270 && e.getY() <= 390
-							&& e.getButton() == 1) {
+							&& e.getButton() == 1 && blnReady == false) {
 						if (board[i] != null) {
 							for (int i2 = 0; i2 < 8; i2++) {
 								if (bench[i2] == null) {
@@ -767,8 +770,8 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 						}
 					}
 				} else {
-					if (e.getX() >= -80 + 120 * i && e.getX() <= 400 + 120 * i && e.getY() >= 270 && e.getY() <= 390
-							&& e.getButton() == 1) {
+					if (e.getX() >= -80 + 120 * i && e.getX() <= 40 + 120 * i && e.getY() >= 270 && e.getY() <= 390
+							&& e.getButton() == 1 && blnReady == false) {
 						if (board[i] != null) {
 							for (int i2 = 0; i2 < 8; i2++) {
 								if (bench[i2] == null) {
