@@ -19,7 +19,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	static Chess[] pieces = new Chess[15], pieces2 = new Chess[15], bench = new Chess[8], board = new Chess[1],
 			roll = new Chess[5];
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intTotalExp = 1, intExp = 0,
-			intBoard[], intBench[], intGold = 20, intPieces, intPort = 3000, intHealth = 100, intGold2,
+			intBoard[], intBench[], intGold = 1, intPieces, intPort = 3000, intHealth = 100, intGold2,
 			intHealth2 = 100, intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour,
 			intRoundNum = 0, intShowScreen = 0, intWin = 0, intHelp = 0;
 	int[] intPieceNum = new int[15];;
