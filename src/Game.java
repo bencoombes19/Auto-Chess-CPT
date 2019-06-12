@@ -19,9 +19,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	static Chess[] pieces = new Chess[15], pieces2 = new Chess[15], bench = new Chess[8], board = new Chess[1],
 			roll = new Chess[5];
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intTotalExp = 1, intExp = 0,
-			intBoard[], intBench[], intGold = 1, intPieces, intPort = 3000, intHealth = 100, intGold2,
-			intHealth2 = 100, intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour,
-			intRoundNum = 0, intShowScreen = 0, intWin = 0, intHelp = 0;
+			intBoard[], intBench[], intGold = 1, intPieces, intPort = 3000, intHealth = 100, intGold2, intHealth2 = 100,
+			intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour, intRoundNum = 0,
+			intShowScreen = 0, intWin = 0, intHelp = 0;
 	int[] intPieceNum = new int[15];
 	public static String strName = "Player1", strName2 = "Player2", board2[];
 	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true,
@@ -474,6 +474,9 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
 				blnShowLabel = true;
 
+			} else {
+				statusbar.setText("Both players dealt the same damage, Tie Round");
+				blnShowLabel = true;
 			}
 		}
 		intExp = intExp + 1;
@@ -599,7 +602,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			if (blnShowLabel == true) {
 				intShowScreen++;
 			}
-			if (intShowScreen > 100) {
+			if (intShowScreen > 50) {
 				blnShowLabel = false;
 				intShowScreen = 0;
 				roll();
@@ -614,13 +617,13 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				mainGame();
 			}
 			if (GameState == 1) {
-				for(int i = 0; i < 15; i++) {
+				for (int i = 0; i < 15; i++) {
 					intPieceNum[i] = 0;
 				}
 				for (int i = 0; i < 8; i++) {
 					if (bench[i] != null) {
-						if(bench[i].intNum < 15) {
-						intPieceNum[bench[i].intNum] = intPieceNum[bench[i].intNum] + 1;
+						if (bench[i].intNum < 15) {
+							intPieceNum[bench[i].intNum] = intPieceNum[bench[i].intNum] + 1;
 						}
 					}
 				}
