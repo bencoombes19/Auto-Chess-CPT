@@ -328,36 +328,36 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 
 	public static void mainGame() {
 		System.out.println("mainGame");
-		int intPieceNum = 0;
+		int intNumPieces = 0;
 		for (int i = 0; i < board.length; i++) {
 			if (board[i] != null) {
-				intPieceNum = intPieceNum + 1;
+				intNumPieces = intNumPieces + 1;
 			}
 		}
-		if (intPieceNum == 1) {
+		if (intNumPieces == 1) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum));
-		} else if (intPieceNum == 2) {
+		} else if (intNumPieces == 2) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum));
-		} else if (intPieceNum == 3) {
+		} else if (intNumPieces == 3) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum));
-		} else if (intPieceNum == 4) {
+		} else if (intNumPieces == 4) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum));
-		} else if (intPieceNum == 5) {
+		} else if (intNumPieces == 5) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum));
-		} else if (intPieceNum == 6) {
+		} else if (intNumPieces == 6) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum));
-		} else if (intPieceNum == 7) {
+		} else if (intNumPieces == 7) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum) + ","
 					+ Integer.toString(board[6].intNum));
-		} else if (intPieceNum == 8) {
+		} else if (intNumPieces == 8) {
 			ssm.sendText("pieces//" + Integer.toString(board[0].intNum) + "," + Integer.toString(board[1].intNum) + ","
 					+ Integer.toString(board[2].intNum) + "," + Integer.toString(board[3].intNum) + ","
 					+ Integer.toString(board[4].intNum) + "," + Integer.toString(board[5].intNum) + ","
@@ -773,7 +773,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 						}
 					}
 				} else {
-					if (e.getX() >= -80 + 120 * i && e.getX() <= 40 + 120 * i && e.getY() >= 270 && e.getY() <= 390
+					if (e.getX() >= -80 + 120 * i && e.getX() <= 40 + 120 * i && e.getY() >= 390 && e.getY() <= 510
 							&& e.getButton() == 1 && blnReady == false) {
 						if (board[i] != null) {
 							for (int i2 = 0; i2 < 8; i2++) {
