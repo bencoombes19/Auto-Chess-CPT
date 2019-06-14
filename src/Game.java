@@ -16,12 +16,11 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			statusbar;
 	static SuperSocketMaster ssm;
 	static BufferedReader reader;
-	static Chess[] pieces = new Chess[15], pieces2 = new Chess[15], bench = new Chess[8], board = new Chess[1],
-			roll = new Chess[5];
+	static Chess[] pieces = new Chess[15], pieces2 = new Chess[15], bench, board, roll = new Chess[5];
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intTotalExp = 1, intExp = 0,
 			intBoard[], intBench[], intGold = 1, intPieces, intPort = 3000, intHealth = 100, intGold2, intHealth2 = 100,
 			intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour, intRoundNum = 0,
-			intShowScreen = 0, intWin = 0, intHelp = 0, HelpState = 0;
+			intShowScreen = 0, intHelp = 0;
 	int[] intPieceNum = new int[15];
 	public static String strName = "Player1", strName2 = "Player2", board2[];
 	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true,
@@ -225,6 +224,14 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 		if (GameState == 0) {
 			if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_ENTER) {
 				if (MenuOption == 0) {
+					intLevel = 1;
+					intGold = 1;
+					intExpLeft = 1;
+					intHealth = 100;
+					intTotalExp = 1;
+					intRoundNum = 0;
+					board = new Chess[1];
+					bench = new Chess[8];
 					GameState = 5;
 				} else if (MenuOption == 1) {
 					options();
@@ -455,7 +462,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				statusbar.setText(strName2 + " won with " + intDamage2 + " damage to " + intDamage + " damage");
 				blnShowLabel = true;
 			} else {
-				statusbar.setText("Both players dealt the same damage, Tie Round");
+				statusbar.setText("Tie round, no damage dealt");
 				blnShowLabel = true;
 			}
 
@@ -475,7 +482,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				blnShowLabel = true;
 
 			} else {
-				statusbar.setText("Both players dealt the same damage, Tie Round");
+				statusbar.setText("Tie round, no damage dealt");
 				blnShowLabel = true;
 			}
 		}
@@ -539,11 +546,11 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			roll[i] = pieces[intRand];
 		}
 		gold3.setText("GOLD: " + Integer.toString(intGold));
-		roll1.setText(roll[0].strName.toUpperCase());
-		roll2.setText(roll[1].strName.toUpperCase());
-		roll3.setText(roll[2].strName.toUpperCase());
-		roll4.setText(roll[3].strName.toUpperCase());
-		roll5.setText(roll[4].strName.toUpperCase());
+		roll1.setText("<html>" + roll[0].strName.toUpperCase() + "<br>" + roll[0].intLevel + " G" + "</html>");
+		roll2.setText("<html>" + roll[1].strName.toUpperCase() + "<br>" + roll[0].intLevel + " G" + "</html>");
+		roll3.setText("<html>" + roll[2].strName.toUpperCase() + "<br>" + roll[0].intLevel + " G" + "</html>");
+		roll4.setText("<html>" + roll[3].strName.toUpperCase() + "<br>" + roll[0].intLevel + " G" + "</html>");
+		roll5.setText("<html>" + roll[4].strName.toUpperCase() + "<br>" + roll[0].intLevel + " G" + "</html>");
 		GameState = 2;
 
 	}
@@ -646,6 +653,11 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 							}
 						}
 					}
+				}
+				if (intHealth <= 0) {
+					GameState = 8;
+				} else if (intHealth2 <= 0) {
+					GameState = 9;
 				}
 			}
 		}
@@ -876,16 +888,19 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 				GameState = 0;
 			}
 		} else if (GameState == 4) {
-			if (e.getX() >= 500 && e.getX() <= 775 && e.getY() >= 216 && e.getY() <= 286) {
+			if (e.getX() >= 500 && e.getX() <= 775 && e.getY() >= 216 && e.getY() <= 286 && intHelp == 0) {
 				intHelp = 1;
 			}
-			if (e.getX() >= 500 && e.getX() <= 775 && e.getY() >= 339 && e.getY() <= 409) {
+			if (e.getX() >= 500 && e.getX() <= 775 && e.getY() >= 339 && e.getY() <= 409 && intHelp == 0) {
 				intHelp = 2;
 			}
-			if (e.getX() >= 500 && e.getX() <= 775 && e.getY() >= 462 && e.getY() <= 532) {
+			if (e.getX() >= 500 && e.getX() <= 775 && e.getY() >= 462 && e.getY() <= 532 && intHelp == 0) {
 				intHelp = 3;
 			}
-			if(intHelp == 1 || intHelp == 2 || intHelp == 3) {
+			if (e.getX() >= 528 && e.getX() <= 752 && e.getY() >= 619 && e.getY() <= 684 && intHelp == 0) {
+				GameState = 0;
+			}
+			if (intHelp == 1 || intHelp == 2 || intHelp == 3) {
 				if (e.getX() >= 520 && e.getX() <= 761 && e.getY() >= 638 && e.getY() <= 708) {
 					intHelp = 0;
 				}
@@ -922,6 +937,14 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 					username.setVisible(false);
 					roll();
 				}
+			}
+		} else if (GameState == 8) {
+			if (e.getX() >= 546 && e.getX() <= 727 && e.getY() >= 476 && e.getY() <= 554) {
+				GameState = 0;
+			}
+		} else if (GameState == 9) {
+			if (e.getX() >= 546 && e.getX() <= 727 && e.getY() >= 476 && e.getY() <= 554) {
+				GameState = 0;
 			}
 		}
 	}

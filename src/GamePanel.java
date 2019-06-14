@@ -26,6 +26,8 @@ public class GamePanel extends JPanel {
 	BufferedImage controlshelp = null;
 	BufferedImage connectionhelp = null;
 	BufferedImage mechanicshelp = null;
+	BufferedImage win = null;
+	BufferedImage lose = null;
 	BufferedImage pieceimgs[] = new BufferedImage[30];
 
 	public void paintComponent(Graphics g) throws NullPointerException {
@@ -61,6 +63,9 @@ public class GamePanel extends JPanel {
 			helpmenu = ImageIO.read(new File("helpmenu.png"));
 			controlshelp = ImageIO.read(new File("controlshelp.png"));
 			connectionhelp = ImageIO.read(new File("connectionhelp.png"));
+			mechanicshelp = ImageIO.read(new File("mechanicshelp.png"));
+			win = ImageIO.read(new File("win.png"));
+			lose = ImageIO.read(new File("lose.png"));
 			for (int i = 0; i < 30; i++) {
 				if (i < 15) {
 					pieceimgs[i] = ImageIO.read(new File(Game.pieces[i].strName + ".png"));
@@ -225,13 +230,13 @@ public class GamePanel extends JPanel {
 		} else if (Game.GameState == 3) {
 			g.drawImage(options, 0, 0, null);
 		} else if (Game.GameState == 4) {
-			if(Game.intHelp == 0) {
-			g.drawImage(helpmenu, 0, 0, null);
-			} else if(Game.intHelp == 1) {
+			if (Game.intHelp == 0) {
+				g.drawImage(helpmenu, 0, 0, null);
+			} else if (Game.intHelp == 1) {
 				g.drawImage(controlshelp, 0, 0, null);
-			} else if(Game.intHelp == 2) {
+			} else if (Game.intHelp == 2) {
 				g.drawImage(connectionhelp, 0, 0, null);
-			} else if(Game.intHelp == 3 ) {
+			} else if (Game.intHelp == 3) {
 				g.drawImage(mechanicshelp, 0, 0, null);
 			}
 		} else if (Game.GameState == 5) {
@@ -240,6 +245,10 @@ public class GamePanel extends JPanel {
 			g.drawImage(client, 0, 0, null);
 		} else if (Game.GameState == 7) {
 			g.drawImage(username, 0, 0, null);
+		} else if (Game.GameState == 8) {
+			g.drawImage(lose, 0, 0, null);
+		} else if (Game.GameState == 9) {
+			g.drawImage(win, 0, 0, null);
 		}
 	}
 
