@@ -21,7 +21,7 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 	public static int MenuOption = 0, GameState = 0, intLevel = 1, intExpLeft = 1, intTotalExp = 1, intExp = 0,
 			intBoard[], intBench[], intGold = 1, intPieces, intPort = 3000, intHealth = 100, intGold2, intHealth2 = 100,
 			intLevel2, intDamage2, intHealthP2, intArmour2, intDamage, intHealthP, intArmour, intRoundNum = 0,
-			intShowScreen = 0, intWin = 0, intHelp = 0;
+			intShowScreen = 0, intWin = 0, intHelp = 0, HelpState = 0;
 	int[] intPieceNum = new int[15];
 	public static String strName = "Player1", strName2 = "Player2", board2[];
 	static boolean blnServer, blnroll1 = true, blnroll2 = true, blnroll3 = true, blnroll4 = true, blnroll5 = true,
@@ -884,6 +884,11 @@ public class Game implements ActionListener, KeyListener, MouseListener, MouseMo
 			}
 			if (e.getX() >= 500 && e.getX() <= 775 && e.getY() >= 462 && e.getY() <= 532) {
 				intHelp = 3;
+			}
+			if(intHelp == 1 || intHelp == 2 || intHelp == 3) {
+				if (e.getX() >= 520 && e.getX() <= 761 && e.getY() >= 638 && e.getY() <= 708) {
+					intHelp = 0;
+				}
 			}
 		} else if (GameState == 5) {
 			if (e.getX() >= 214 && e.getX() <= 501 && e.getY() >= 287 && e.getY() <= 433) {
