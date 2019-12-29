@@ -1,0 +1,235 @@
+1 Jun 2019 23:55:56 GMT: Log 'EclipseCompiler.txt' opened: 1 Jun 2019 23:55:56 GMT with name C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\EclipseCompiler.txt
+1 Jun 2019 23:56:08 GMT: diagnostics = javax.tools.DiagnosticCollector@2310119c
+fileManager = org.eclipse.jdt.internal.compiler.tool.EclipseFileManager@4519f8e2
+fileObjects = [C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\Chess.java, C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\Game.java, C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\GamePanel.java, C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\SuperSocketMaster.java]
+1 Jun 2019 23:56:08 GMT: Calling 'org.eclipse.jdt.internal.compiler.tool.EclipseCompiler@490c0316' with options [-Xlint:deprecation, -Xlint:unchecked, -g, -classpath, C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src;C:\Users\Ben\Desktop\arc.jar;C:\Users\Ben\Desktop\Items\arc.jar;C:\Users\Ben\Desktop\Items\DrJava\drjava-beta-20160913-225446.exe]
+1 Jun 2019 23:56:09 GMT: Compiler call returned
+1 Jun 2019 23:56:09 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@7c7aaad4
+1 Jun 2019 23:56:09 GMT:  Kind = WARNING
+1 Jun 2019 23:56:09 GMT: Name = C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\GamePanel.java LineNo = 8 ColNo = 14 Msg = 'The serializable class GamePanel does not declare a static final serialVersionUID field of type long'
+1 Jun 2019 23:56:09 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@1dcbf400
+1 Jun 2019 23:56:09 GMT:  Kind = WARNING
+1 Jun 2019 23:56:09 GMT: Name = C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\GamePanel.java LineNo = 4 ColNo = 8 Msg = 'The import java.awt.geom is never used'
+1 Jun 2019 23:56:09 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@344ec167
+1 Jun 2019 23:56:09 GMT:  Kind = WARNING
+1 Jun 2019 23:56:09 GMT: Name = C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\GamePanel.java LineNo = 37 ColNo = 8 Msg = 'The value of the local variable font2 is not used'
+1 Jun 2019 23:56:09 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@520b228d
+1 Jun 2019 23:56:09 GMT:  Kind = WARNING
+1 Jun 2019 23:56:09 GMT: Name = C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\GamePanel.java LineNo = 38 ColNo = 14 Msg = 'The value of the local variable g2 is not used'
+1 Jun 2019 23:56:09 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@20a39fb4
+1 Jun 2019 23:56:09 GMT:  Kind = WARNING
+1 Jun 2019 23:56:09 GMT: Name = C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\SuperSocketMaster.java LineNo = 185 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyIP is not used'
+1 Jun 2019 23:56:09 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@620a0454
+1 Jun 2019 23:56:09 GMT:  Kind = WARNING
+1 Jun 2019 23:56:09 GMT: Name = C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\SuperSocketMaster.java LineNo = 186 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyHostname is not used'
+1 Jun 2019 23:56:09 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@200da48b
+1 Jun 2019 23:56:09 GMT:  Kind = WARNING
+1 Jun 2019 23:56:09 GMT: Name = C:\Users\Ben\Documents\GitHub\Auto-Chess-CPT\src\SuperSocketMaster.java LineNo = 133 ColNo = 29 Msg = 'The method removeActionListener(java.awt.event.ActionListener) from the type SuperSocketMaster is never used locally'
+1 Jun 2019 23:57:10 GMT: diagnostics = javax.tools.DiagnosticCollector@65052f26
+fileManager = org.eclipse.jdt.internal.compiler.tool.EclipseFileManager@1858caeb
+fileObjects = [C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Game.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Chess.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java]
+1 Jun 2019 23:57:10 GMT: Calling 'org.eclipse.jdt.internal.compiler.tool.EclipseCompiler@3bc0a5d' with options [-Xlint:deprecation, -Xlint:unchecked, -g, -classpath, C:\Users\Ben\Desktop\Auto-Chess-CPT;C:\Users\Ben\Desktop\arc.jar;C:\Users\Ben\Desktop\Items\arc.jar;C:\Users\Ben\Desktop\Items\DrJava\drjava-beta-20160913-225446.exe]
+1 Jun 2019 23:57:10 GMT: Compiler call returned
+1 Jun 2019 23:57:10 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@37dd5592
+1 Jun 2019 23:57:10 GMT:  Kind = WARNING
+1 Jun 2019 23:57:10 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 8 ColNo = 14 Msg = 'The serializable class GamePanel does not declare a static final serialVersionUID field of type long'
+1 Jun 2019 23:57:10 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@30cfb3ab
+1 Jun 2019 23:57:10 GMT:  Kind = WARNING
+1 Jun 2019 23:57:10 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 4 ColNo = 8 Msg = 'The import java.awt.geom is never used'
+1 Jun 2019 23:57:10 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@4f24bb71
+1 Jun 2019 23:57:10 GMT:  Kind = WARNING
+1 Jun 2019 23:57:10 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 37 ColNo = 8 Msg = 'The value of the local variable font2 is not used'
+1 Jun 2019 23:57:10 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@60135ece
+1 Jun 2019 23:57:10 GMT:  Kind = WARNING
+1 Jun 2019 23:57:10 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 38 ColNo = 14 Msg = 'The value of the local variable g2 is not used'
+1 Jun 2019 23:57:10 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@3dbff69b
+1 Jun 2019 23:57:10 GMT:  Kind = WARNING
+1 Jun 2019 23:57:10 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 185 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyIP is not used'
+1 Jun 2019 23:57:10 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@70a0486c
+1 Jun 2019 23:57:10 GMT:  Kind = WARNING
+1 Jun 2019 23:57:10 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 186 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyHostname is not used'
+1 Jun 2019 23:57:10 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@1a358a3a
+1 Jun 2019 23:57:10 GMT:  Kind = WARNING
+1 Jun 2019 23:57:10 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 133 ColNo = 29 Msg = 'The method removeActionListener(java.awt.event.ActionListener) from the type SuperSocketMaster is never used locally'
+1 Jun 2019 23:57:12 GMT: diagnostics = javax.tools.DiagnosticCollector@51eb5902
+fileManager = org.eclipse.jdt.internal.compiler.tool.EclipseFileManager@7cab2ccb
+fileObjects = [C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Game.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Chess.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java]
+1 Jun 2019 23:57:12 GMT: Calling 'org.eclipse.jdt.internal.compiler.tool.EclipseCompiler@2614c3dc' with options [-Xlint:deprecation, -Xlint:unchecked, -g, -classpath, C:\Users\Ben\Desktop\Auto-Chess-CPT;C:\Users\Ben\Desktop\arc.jar;C:\Users\Ben\Desktop\Items\arc.jar;C:\Users\Ben\Desktop\Items\DrJava\drjava-beta-20160913-225446.exe]
+1 Jun 2019 23:57:12 GMT: Compiler call returned
+1 Jun 2019 23:57:12 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@164e3735
+1 Jun 2019 23:57:12 GMT:  Kind = WARNING
+1 Jun 2019 23:57:12 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 8 ColNo = 14 Msg = 'The serializable class GamePanel does not declare a static final serialVersionUID field of type long'
+1 Jun 2019 23:57:12 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@7de63384
+1 Jun 2019 23:57:12 GMT:  Kind = WARNING
+1 Jun 2019 23:57:12 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 4 ColNo = 8 Msg = 'The import java.awt.geom is never used'
+1 Jun 2019 23:57:12 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@2bef552f
+1 Jun 2019 23:57:12 GMT:  Kind = WARNING
+1 Jun 2019 23:57:12 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 37 ColNo = 8 Msg = 'The value of the local variable font2 is not used'
+1 Jun 2019 23:57:12 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@76eaee90
+1 Jun 2019 23:57:12 GMT:  Kind = WARNING
+1 Jun 2019 23:57:12 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 38 ColNo = 14 Msg = 'The value of the local variable g2 is not used'
+1 Jun 2019 23:57:12 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@117a98e7
+1 Jun 2019 23:57:12 GMT:  Kind = WARNING
+1 Jun 2019 23:57:12 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 185 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyIP is not used'
+1 Jun 2019 23:57:12 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@5d4ce35f
+1 Jun 2019 23:57:12 GMT:  Kind = WARNING
+1 Jun 2019 23:57:12 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 186 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyHostname is not used'
+1 Jun 2019 23:57:12 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@cdb93f4
+1 Jun 2019 23:57:12 GMT:  Kind = WARNING
+1 Jun 2019 23:57:12 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 133 ColNo = 29 Msg = 'The method removeActionListener(java.awt.event.ActionListener) from the type SuperSocketMaster is never used locally'
+1 Jun 2019 23:57:14 GMT: diagnostics = javax.tools.DiagnosticCollector@378abeb9
+fileManager = org.eclipse.jdt.internal.compiler.tool.EclipseFileManager@3a49eb56
+fileObjects = [C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Game.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Chess.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java]
+1 Jun 2019 23:57:14 GMT: Calling 'org.eclipse.jdt.internal.compiler.tool.EclipseCompiler@319ea8cd' with options [-Xlint:deprecation, -Xlint:unchecked, -g, -classpath, C:\Users\Ben\Desktop\Auto-Chess-CPT;C:\Users\Ben\Desktop\arc.jar;C:\Users\Ben\Desktop\Items\arc.jar;C:\Users\Ben\Desktop\Items\DrJava\drjava-beta-20160913-225446.exe]
+1 Jun 2019 23:57:14 GMT: Compiler call returned
+1 Jun 2019 23:57:14 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@5149be8f
+1 Jun 2019 23:57:14 GMT:  Kind = WARNING
+1 Jun 2019 23:57:14 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 8 ColNo = 14 Msg = 'The serializable class GamePanel does not declare a static final serialVersionUID field of type long'
+1 Jun 2019 23:57:14 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@1716a1c9
+1 Jun 2019 23:57:14 GMT:  Kind = WARNING
+1 Jun 2019 23:57:14 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 4 ColNo = 8 Msg = 'The import java.awt.geom is never used'
+1 Jun 2019 23:57:14 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@6d6436b
+1 Jun 2019 23:57:14 GMT:  Kind = WARNING
+1 Jun 2019 23:57:14 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 37 ColNo = 8 Msg = 'The value of the local variable font2 is not used'
+1 Jun 2019 23:57:14 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@5c046518
+1 Jun 2019 23:57:14 GMT:  Kind = WARNING
+1 Jun 2019 23:57:14 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 38 ColNo = 14 Msg = 'The value of the local variable g2 is not used'
+1 Jun 2019 23:57:14 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@40a505d1
+1 Jun 2019 23:57:14 GMT:  Kind = WARNING
+1 Jun 2019 23:57:14 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 185 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyIP is not used'
+1 Jun 2019 23:57:14 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@629fece5
+1 Jun 2019 23:57:14 GMT:  Kind = WARNING
+1 Jun 2019 23:57:14 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 186 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyHostname is not used'
+1 Jun 2019 23:57:14 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@56e626c6
+1 Jun 2019 23:57:14 GMT:  Kind = WARNING
+1 Jun 2019 23:57:14 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 133 ColNo = 29 Msg = 'The method removeActionListener(java.awt.event.ActionListener) from the type SuperSocketMaster is never used locally'
+1 Jun 2019 23:57:16 GMT: diagnostics = javax.tools.DiagnosticCollector@250595af
+fileManager = org.eclipse.jdt.internal.compiler.tool.EclipseFileManager@4526c660
+fileObjects = [C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Game.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Chess.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java]
+1 Jun 2019 23:57:16 GMT: Calling 'org.eclipse.jdt.internal.compiler.tool.EclipseCompiler@7605cf37' with options [-Xlint:deprecation, -Xlint:unchecked, -g, -classpath, C:\Users\Ben\Desktop\Auto-Chess-CPT;C:\Users\Ben\Desktop\arc.jar;C:\Users\Ben\Desktop\Items\arc.jar;C:\Users\Ben\Desktop\Items\DrJava\drjava-beta-20160913-225446.exe]
+1 Jun 2019 23:57:16 GMT: Compiler call returned
+1 Jun 2019 23:57:16 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@17102fb0
+1 Jun 2019 23:57:16 GMT:  Kind = WARNING
+1 Jun 2019 23:57:16 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 8 ColNo = 14 Msg = 'The serializable class GamePanel does not declare a static final serialVersionUID field of type long'
+1 Jun 2019 23:57:16 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@4cc70d41
+1 Jun 2019 23:57:16 GMT:  Kind = WARNING
+1 Jun 2019 23:57:16 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 4 ColNo = 8 Msg = 'The import java.awt.geom is never used'
+1 Jun 2019 23:57:16 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@66b8665a
+1 Jun 2019 23:57:16 GMT:  Kind = WARNING
+1 Jun 2019 23:57:16 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 37 ColNo = 8 Msg = 'The value of the local variable font2 is not used'
+1 Jun 2019 23:57:16 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@23b70a1c
+1 Jun 2019 23:57:16 GMT:  Kind = WARNING
+1 Jun 2019 23:57:16 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 38 ColNo = 14 Msg = 'The value of the local variable g2 is not used'
+1 Jun 2019 23:57:16 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@354cdc75
+1 Jun 2019 23:57:16 GMT:  Kind = WARNING
+1 Jun 2019 23:57:16 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 185 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyIP is not used'
+1 Jun 2019 23:57:16 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@41957298
+1 Jun 2019 23:57:16 GMT:  Kind = WARNING
+1 Jun 2019 23:57:16 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 186 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyHostname is not used'
+1 Jun 2019 23:57:16 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@643a4646
+1 Jun 2019 23:57:16 GMT:  Kind = WARNING
+1 Jun 2019 23:57:16 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 133 ColNo = 29 Msg = 'The method removeActionListener(java.awt.event.ActionListener) from the type SuperSocketMaster is never used locally'
+2 Jun 2019 0:02:35 GMT: diagnostics = javax.tools.DiagnosticCollector@2409edee
+fileManager = org.eclipse.jdt.internal.compiler.tool.EclipseFileManager@1bbcefab
+fileObjects = [C:\Users\Ben\Desktop\Auto-Chess-CPT\Game.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Chess.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java]
+2 Jun 2019 0:02:35 GMT: Calling 'org.eclipse.jdt.internal.compiler.tool.EclipseCompiler@73c2910f' with options [-Xlint:deprecation, -Xlint:unchecked, -g, -classpath, C:\Users\Ben\Desktop\Auto-Chess-CPT;C:\Users\Ben\Desktop\arc.jar;C:\Users\Ben\Desktop\Items\arc.jar;C:\Users\Ben\Desktop\Items\DrJava\drjava-beta-20160913-225446.exe]
+2 Jun 2019 0:02:36 GMT: Compiler call returned
+2 Jun 2019 0:02:36 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@6efba39f
+2 Jun 2019 0:02:36 GMT:  Kind = WARNING
+2 Jun 2019 0:02:36 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 185 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyIP is not used'
+2 Jun 2019 0:02:36 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@f08c88f
+2 Jun 2019 0:02:36 GMT:  Kind = WARNING
+2 Jun 2019 0:02:36 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 186 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyHostname is not used'
+2 Jun 2019 0:02:36 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@2e2d03ad
+2 Jun 2019 0:02:36 GMT:  Kind = WARNING
+2 Jun 2019 0:02:36 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 133 ColNo = 29 Msg = 'The method removeActionListener(java.awt.event.ActionListener) from the type SuperSocketMaster is never used locally'
+2 Jun 2019 0:02:36 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@19c174a6
+2 Jun 2019 0:02:36 GMT:  Kind = WARNING
+2 Jun 2019 0:02:36 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 8 ColNo = 14 Msg = 'The serializable class GamePanel does not declare a static final serialVersionUID field of type long'
+2 Jun 2019 0:02:36 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@2a15db5a
+2 Jun 2019 0:02:36 GMT:  Kind = WARNING
+2 Jun 2019 0:02:36 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 4 ColNo = 8 Msg = 'The import java.awt.geom is never used'
+2 Jun 2019 0:02:36 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@63103227
+2 Jun 2019 0:02:36 GMT:  Kind = WARNING
+2 Jun 2019 0:02:36 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 37 ColNo = 8 Msg = 'The value of the local variable font2 is not used'
+2 Jun 2019 0:02:36 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@25e67583
+2 Jun 2019 0:02:36 GMT:  Kind = WARNING
+2 Jun 2019 0:02:36 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 38 ColNo = 14 Msg = 'The value of the local variable g2 is not used'
+2 Jun 2019 0:02:40 GMT: diagnostics = javax.tools.DiagnosticCollector@4cd06dd8
+fileManager = org.eclipse.jdt.internal.compiler.tool.EclipseFileManager@a409a08
+fileObjects = [C:\Users\Ben\Desktop\Auto-Chess-CPT\Game.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Chess.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java]
+2 Jun 2019 0:02:40 GMT: Calling 'org.eclipse.jdt.internal.compiler.tool.EclipseCompiler@35ba40fa' with options [-Xlint:deprecation, -Xlint:unchecked, -g, -classpath, C:\Users\Ben\Desktop\Auto-Chess-CPT;C:\Users\Ben\Desktop\arc.jar;C:\Users\Ben\Desktop\Items\arc.jar;C:\Users\Ben\Desktop\Items\DrJava\drjava-beta-20160913-225446.exe]
+2 Jun 2019 0:02:40 GMT: Compiler call returned
+2 Jun 2019 0:02:40 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@337a45a
+2 Jun 2019 0:02:40 GMT:  Kind = WARNING
+2 Jun 2019 0:02:40 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 185 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyIP is not used'
+2 Jun 2019 0:02:40 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@ecd55cf
+2 Jun 2019 0:02:40 GMT:  Kind = WARNING
+2 Jun 2019 0:02:40 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 186 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyHostname is not used'
+2 Jun 2019 0:02:40 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@2a8f90f3
+2 Jun 2019 0:02:40 GMT:  Kind = WARNING
+2 Jun 2019 0:02:40 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 133 ColNo = 29 Msg = 'The method removeActionListener(java.awt.event.ActionListener) from the type SuperSocketMaster is never used locally'
+2 Jun 2019 0:02:40 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@15ba1c58
+2 Jun 2019 0:02:40 GMT:  Kind = WARNING
+2 Jun 2019 0:02:40 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 8 ColNo = 14 Msg = 'The serializable class GamePanel does not declare a static final serialVersionUID field of type long'
+2 Jun 2019 0:02:40 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@2b916fc1
+2 Jun 2019 0:02:40 GMT:  Kind = WARNING
+2 Jun 2019 0:02:40 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 4 ColNo = 8 Msg = 'The import java.awt.geom is never used'
+2 Jun 2019 0:02:40 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@4f963451
+2 Jun 2019 0:02:40 GMT:  Kind = WARNING
+2 Jun 2019 0:02:40 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 37 ColNo = 8 Msg = 'The value of the local variable font2 is not used'
+2 Jun 2019 0:02:40 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@19c82d58
+2 Jun 2019 0:02:40 GMT:  Kind = WARNING
+2 Jun 2019 0:02:40 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 38 ColNo = 14 Msg = 'The value of the local variable g2 is not used'
+2 Jun 2019 0:02:41 GMT: diagnostics = javax.tools.DiagnosticCollector@5eeafb29
+fileManager = org.eclipse.jdt.internal.compiler.tool.EclipseFileManager@28c80252
+fileObjects = [C:\Users\Ben\Desktop\Auto-Chess-CPT\Game.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Chess.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java]
+2 Jun 2019 0:02:41 GMT: Calling 'org.eclipse.jdt.internal.compiler.tool.EclipseCompiler@5a3f0e81' with options [-Xlint:deprecation, -Xlint:unchecked, -g, -classpath, C:\Users\Ben\Desktop\Auto-Chess-CPT;C:\Users\Ben\Desktop\arc.jar;C:\Users\Ben\Desktop\Items\arc.jar;C:\Users\Ben\Desktop\Items\DrJava\drjava-beta-20160913-225446.exe]
+2 Jun 2019 0:02:41 GMT: Compiler call returned
+2 Jun 2019 0:02:41 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@220c19c5
+2 Jun 2019 0:02:41 GMT:  Kind = WARNING
+2 Jun 2019 0:02:41 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 185 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyIP is not used'
+2 Jun 2019 0:02:41 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@7e756aa2
+2 Jun 2019 0:02:41 GMT:  Kind = WARNING
+2 Jun 2019 0:02:41 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 186 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyHostname is not used'
+2 Jun 2019 0:02:41 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@33658718
+2 Jun 2019 0:02:41 GMT:  Kind = WARNING
+2 Jun 2019 0:02:41 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 133 ColNo = 29 Msg = 'The method removeActionListener(java.awt.event.ActionListener) from the type SuperSocketMaster is never used locally'
+2 Jun 2019 0:02:41 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@79802adc
+2 Jun 2019 0:02:41 GMT:  Kind = WARNING
+2 Jun 2019 0:02:41 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 8 ColNo = 14 Msg = 'The serializable class GamePanel does not declare a static final serialVersionUID field of type long'
+2 Jun 2019 0:02:41 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@3b00d618
+2 Jun 2019 0:02:41 GMT:  Kind = WARNING
+2 Jun 2019 0:02:41 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 4 ColNo = 8 Msg = 'The import java.awt.geom is never used'
+2 Jun 2019 0:02:41 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@6ef58ba0
+2 Jun 2019 0:02:41 GMT:  Kind = WARNING
+2 Jun 2019 0:02:41 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 37 ColNo = 8 Msg = 'The value of the local variable font2 is not used'
+2 Jun 2019 0:02:41 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@71b78c21
+2 Jun 2019 0:02:41 GMT:  Kind = WARNING
+2 Jun 2019 0:02:41 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 38 ColNo = 14 Msg = 'The value of the local variable g2 is not used'
+2 Jun 2019 0:02:43 GMT: diagnostics = javax.tools.DiagnosticCollector@411a27d5
+fileManager = org.eclipse.jdt.internal.compiler.tool.EclipseFileManager@5cfbf824
+fileObjects = [C:\Users\Ben\Desktop\Auto-Chess-CPT\Game.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\Chess.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java, C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java]
+2 Jun 2019 0:02:43 GMT: Calling 'org.eclipse.jdt.internal.compiler.tool.EclipseCompiler@729965ce' with options [-Xlint:deprecation, -Xlint:unchecked, -g, -classpath, C:\Users\Ben\Desktop\Auto-Chess-CPT;C:\Users\Ben\Desktop\arc.jar;C:\Users\Ben\Desktop\Items\arc.jar;C:\Users\Ben\Desktop\Items\DrJava\drjava-beta-20160913-225446.exe]
+2 Jun 2019 0:02:43 GMT: Compiler call returned
+2 Jun 2019 0:02:43 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@7b8a001f
+2 Jun 2019 0:02:43 GMT:  Kind = WARNING
+2 Jun 2019 0:02:43 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 185 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyIP is not used'
+2 Jun 2019 0:02:43 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@cfdf639
+2 Jun 2019 0:02:43 GMT:  Kind = WARNING
+2 Jun 2019 0:02:43 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 186 ColNo = 12 Msg = 'The value of the field SuperSocketMaster.SocketConnection.strMyHostname is not used'
+2 Jun 2019 0:02:43 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@d668a95
+2 Jun 2019 0:02:43 GMT:  Kind = WARNING
+2 Jun 2019 0:02:43 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\SuperSocketMaster.java LineNo = 133 ColNo = 29 Msg = 'The method removeActionListener(java.awt.event.ActionListener) from the type SuperSocketMaster is never used locally'
+2 Jun 2019 0:02:43 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@7871339a
+2 Jun 2019 0:02:43 GMT:  Kind = WARNING
+2 Jun 2019 0:02:43 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 8 ColNo = 14 Msg = 'The serializable class GamePanel does not declare a static final serialVersionUID field of type long'
+2 Jun 2019 0:02:43 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@53d04e73
+2 Jun 2019 0:02:43 GMT:  Kind = WARNING
+2 Jun 2019 0:02:43 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 4 ColNo = 8 Msg = 'The import java.awt.geom is never used'
+2 Jun 2019 0:02:43 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@307f360e
+2 Jun 2019 0:02:43 GMT:  Kind = WARNING
+2 Jun 2019 0:02:43 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 37 ColNo = 8 Msg = 'The value of the local variable font2 is not used'
+2 Jun 2019 0:02:43 GMT: Processing diagnostic org.eclipse.jdt.internal.compiler.tool.EclipseCompilerImpl$3$2@9f430b6
+2 Jun 2019 0:02:43 GMT:  Kind = WARNING
+2 Jun 2019 0:02:43 GMT: Name = C:\Users\Ben\Desktop\Auto-Chess-CPT\GamePanel.java LineNo = 38 ColNo = 14 Msg = 'The value of the local variable g2 is not used'

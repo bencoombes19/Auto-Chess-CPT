@@ -133,7 +133,7 @@ public class SuperSocketMaster{
   private synchronized void removeActionListener(ActionListener listener) {
     actionListener = AWTEventMulticaster.remove(actionListener, listener);
   }
-  private void postActionEvent() {
+codi
     // when event occurs which causes "action" semantic
     ActionListener listener = actionListener;
     if (listener != null) {
